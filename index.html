@@ -12,7 +12,6 @@
             --text-color: #ffffff;
             --muted-color: #aaaaaa;
             --border-color: #222222;
-            --accent-color: #ffffff;
         }
 
         [data-theme="light"] {
@@ -21,7 +20,6 @@
             --text-color: #000000;
             --muted-color: #555555;
             --border-color: #dddddd;
-            --accent-color: #000000;
         }
 
         body {
@@ -89,16 +87,16 @@
             font-size: 0.95rem;
         }
 
+        /* Clean Text-Only Visitor Counter */
         .counter-box {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            display: inline-block;
             padding: 4px 10px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-color);
+            font-weight: 500;
         }
 
         .social-links {
@@ -207,9 +205,9 @@
                 <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
                 <p>High School Student | Aspiring AI & Machine Learning Engineer | Competitive Programmer</p>
                 
-                <!-- Simple Clean Visitor Count -->
+                <!-- Pure Text Visitor Count (No Image) -->
                 <div class="counter-box">
-                    <i class="far fa-eye"></i> Views: <span id="visit-count">Loading...</span>
+                    Views: <span id="visit-count">...</span>
                 </div>
 
                 <div class="social-links">
@@ -270,14 +268,18 @@
             document.documentElement.setAttribute('data-theme', targetTheme);
         }
 
-        // Simple Counter API script
-        fetch('https://api.countapi.xyz/hit/bewuketuyilikal3.github.io/visits')
+        // Fetch Live Counter (Pure Text)
+        fetch('https://api.counterapi.dev/v1/bewuketuyilikal3_portfolio/views/up')
             .then(res => res.json())
-            .then(res => {
-                document.getElementById('visit-count').innerText = res.value || '1';
+            .then(data => {
+                if (data && data.count) {
+                    document.getElementById('visit-count').innerText = data.count;
+                } else {
+                    document.getElementById('visit-count').innerText = '1';
+                }
             })
             .catch(() => {
-                document.getElementById('visit-count').innerText = '1+';
+                document.getElementById('visit-count').innerText = '1';
             });
     </script>
 </body>
