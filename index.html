@@ -50,7 +50,7 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 700px;
             margin: 30px auto;
             padding: 0 15px;
         }
@@ -63,12 +63,29 @@
             margin-bottom: 30px;
         }
 
+        .profile-img-container {
+            position: relative;
+            cursor: pointer;
+        }
+
         .profile-img {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.03);
+        }
+
+        .click-hint {
+            font-size: 0.7rem;
+            color: var(--muted-color);
+            text-align: center;
+            margin-top: 4px;
         }
 
         .hero-text h1 {
@@ -124,23 +141,11 @@
             color: var(--bg-color);
         }
 
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 260px;
-            gap: 20px;
-        }
-
-        @media (max-width: 700px) {
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 18px;
+            padding: 20px;
             margin-bottom: 20px;
         }
 
@@ -151,45 +156,15 @@
             padding-bottom: 8px;
         }
 
-        .side-photo {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            object-fit: cover;
-        }
-
         .focus-list {
             padding-left: 18px;
             color: var(--muted-color);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
         .focus-list li {
-            margin-bottom: 10px;
-        }
-
-        .comment-box input, .comment-box textarea {
-            width: 100%;
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 8px;
-            border-radius: 4px;
-            margin-bottom: 8px;
-            box-sizing: border-box;
-            font-size: 0.85rem;
-        }
-
-        .submit-btn {
-            background: var(--text-color);
-            color: var(--bg-color);
-            border: none;
-            padding: 6px 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.85rem;
+            margin-bottom: 12px;
         }
     </style>
 </head>
@@ -203,7 +178,11 @@
     <div class="container">
         <!-- Hero Section -->
         <div class="hero-section">
-            <img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal" class="profile-img">
+            <div class="profile-img-container" onclick="togglePhoto()">
+                <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal" class="profile-img">
+                <div class="click-hint">👆 Click photo</div>
+            </div>
+
             <div class="hero-text">
                 <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
                 <p>Grade 11 Student | Self-Taught AI Learner | Mizan-Tepi University STEM Center Member</p>
@@ -230,50 +209,46 @@
             </div>
         </div>
 
-        <!-- Main Layout -->
-        <div class="main-grid">
-            <div class="left-content">
-                <div class="card">
-                    <h2>About Me</h2>
-                    <p style="font-size: 0.95rem; color: var(--muted-color); line-height: 1.6;">
-                        I am a <b>Grade 11 boarding student</b> at Mizan-Tepi University High School. I am a self-motivated learner passionate about programming and technology.
-                    </p>
-                    <ul class="focus-list">
-                        <li><b>STEM Center & Research:</b> Active student member at the Mizan-Tepi University STEM Center, engaging in innovative projects and research.</li>
-                        <li><b>Python & Coding:</b> Learned Python programming through <b>AddisCoder</b>, building a solid foundation in computer science principles.</li>
-                        <li><b>Mobile App Development:</b> Built a custom mobile application for my school to assist with daily activities and learning.</li>
-                        <li><b>Self-Taught AI & ML:</b> Currently teaching myself Artificial Intelligence, Machine Learning, and fundamental algorithms step-by-step.</li>
-                        <li><b>Future Goal:</b> Aspiring to study advanced Artificial Intelligence, Deep Learning, and Machine Learning globally to create impactful technological solutions.</li>
-                    </ul>
-                </div>
-
-                <div class="card comment-box">
-                    <h2>Leave a Message</h2>
-                    <form action="https://formspree.io/f/xbjnqkyw" method="POST">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <textarea name="message" rows="3" placeholder="Write your message..." required></textarea>
-                        <button type="submit" class="submit-btn">Send</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Side Full Photo -->
-            <div class="right-sidebar">
-                <div class="card" style="padding: 10px; text-align: center;">
-                    <img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Full" class="side-photo">
-                </div>
-            </div>
+        <!-- About Section -->
+        <div class="card">
+            <h2>About Me</h2>
+            <p style="font-size: 0.95rem; color: var(--muted-color); line-height: 1.6;">
+                I am a <b>Grade 11 boarding student</b> at Mizan-Tepi University High School. I am a self-motivated learner passionate about programming and technology.
+            </p>
+            <ul class="focus-list">
+                <li><b>STEM Center & Research:</b> Active student member at the Mizan-Tepi University STEM Center, engaging in innovative projects and research.</li>
+                <li><b>Python & Coding:</b> Learned Python programming through <b>AddisCoder</b>, building a solid foundation in computer science principles.</li>
+                <li><b>Mobile App Development:</b> Built a custom mobile application for my school to assist with daily activities and learning.</li>
+                <li><b>Self-Taught AI & ML:</b> Currently teaching myself Artificial Intelligence, Machine Learning, and fundamental algorithms step-by-step.</li>
+                <li><b>Future Goal:</b> Aspiring to study advanced Artificial Intelligence, Deep Learning, and Machine Learning globally to create impactful technological solutions.</li>
+            </ul>
         </div>
     </div>
 
     <script>
+        // Toggle Dark/Light Theme
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', targetTheme);
         }
 
-        // Live Counter Script (Pure Text)
+        // Toggle Profile Photo on Click
+        const img1 = "IMG_20260915_114804_267 (1).jpg";
+        const img2 = "IMG_20260915_114804_064.jpg";
+        let isFirstImage = true;
+
+        function togglePhoto() {
+            const photoElement = document.getElementById("myPhoto");
+            if (isFirstImage) {
+                photoElement.src = img2;
+            } else {
+                photoElement.src = img1;
+            }
+            isFirstImage = !isFirstImage;
+        }
+
+        // Live Text Visitor Counter
         fetch('https://api.counterapi.dev/v1/bewuketuyilikal3_portfolio/views/up')
             .then(res => res.json())
             .then(data => {
