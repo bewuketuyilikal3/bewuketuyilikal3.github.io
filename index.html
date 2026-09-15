@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bewuketu Yilikal - Portfolio</title>
-    <!-- FontAwesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-color: #c9d1d9;
-            --accent-color: #58a6ff;
-            --border-color: #30363d;
+            --bg-color: #000000;
+            --card-bg: #0a0a0a;
+            --text-color: #ffffff;
+            --muted-color: #aaaaaa;
+            --border-color: #222222;
+            --accent-color: #ffffff;
         }
 
         [data-theme="light"] {
             --bg-color: #ffffff;
-            --card-bg: #f6f8fa;
-            --text-color: #24292f;
-            --accent-color: #0969da;
-            --border-color: #d0d7de;
+            --card-bg: #f9f9f9;
+            --text-color: #000000;
+            --muted-color: #555555;
+            --border-color: #dddddd;
+            --accent-color: #000000;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -36,7 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
+            padding: 15px 8%;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -44,113 +45,149 @@
             background: transparent;
             border: 1px solid var(--border-color);
             color: var(--text-color);
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 5px 12px;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 0.8rem;
         }
 
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0 15px;
         }
 
-        .profile-section {
+        .hero-section {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
 
         .profile-img {
-            width: 170px;
-            height: 170px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent-color);
+            border: 2px solid var(--border-color);
         }
 
-        .full-img {
-            width: 100%;
-            max-width: 450px;
-            border-radius: 12px;
-            margin: 20px 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .bio-info h1 {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
+        .hero-text h1 {
+            font-size: 1.8rem;
+            margin: 0 0 5px 0;
         }
 
         .bio-name {
             font-weight: bold;
             font-style: italic;
-            color: var(--accent-color);
+        }
+
+        .hero-text p {
+            color: var(--muted-color);
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .counter-box {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--muted-color);
         }
 
         .social-links {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 8px;
+            margin-top: 12px;
             flex-wrap: wrap;
         }
 
         .social-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            border-radius: 8px;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
             background: var(--card-bg);
             color: var(--text-color);
             text-decoration: none;
             border: 1px solid var(--border-color);
+            font-size: 0.8rem;
             transition: 0.2s;
         }
 
         .social-btn:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
+            background: var(--text-color);
+            color: var(--bg-color);
         }
 
-        .counter-box {
-            margin-top: 15px;
-            display: inline-block;
-            padding: 6px 14px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 0.9rem;
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 260px;
+            gap: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 20px;
         }
 
-        textarea, input[type="text"] {
+        .card h2 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .side-photo {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            object-fit: cover;
+        }
+
+        .focus-list {
+            padding-left: 18px;
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Compact Comment Form */
+        .comment-box input, .comment-box textarea {
             width: 100%;
             background: var(--bg-color);
             border: 1px solid var(--border-color);
             color: var(--text-color);
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
             box-sizing: border-box;
+            font-size: 0.85rem;
         }
 
         .submit-btn {
-            background: var(--accent-color);
-            color: #fff;
+            background: var(--text-color);
+            color: var(--bg-color);
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 6px 14px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -162,20 +199,17 @@
     </header>
 
     <div class="container">
-        <!-- Profile Section -->
-        <div class="profile-section">
-            <!-- የቅርብ ፎቶህ -->
-            <img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal Profile" class="profile-img">
-            <div class="bio-info">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal" class="profile-img">
+            <div class="hero-text">
                 <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
                 <p>High School Student | Aspiring AI & Machine Learning Engineer | Competitive Programmer</p>
                 
-                <!-- Visitor View Counter -->
                 <div class="counter-box">
-                    👁️ Total Page Views: <img src="https://profile-counter.glitch.me/bewuketuyilikal3/count.svg" alt="Views" style="vertical-align: middle;">
+                    👁️ Views: <img src="https://profile-counter.glitch.me/bewuketuyilikal3/count.svg" alt="Views" style="vertical-align: middle; height: 14px;">
                 </div>
 
-                <!-- Social Links with Official Logos -->
                 <div class="social-links">
                     <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn">
                         <i class="fab fa-github"></i> GitHub
@@ -187,30 +221,43 @@
                         <i class="fas fa-envelope"></i> Email
                     </a>
                     <a href="https://wa.me/251900000000" target="_blank" class="social-btn">
-                        <i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp
+                        <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- About & Full Photo Section -->
-        <div class="card">
-            <h2>About Me</h2>
-            <p>I focus on computer science fundamentals, algorithm design, dynamic programming, and building full-stack applications with Python & FastAPI.</p>
-            <center>
-                <!-- የሙሉ አካል ፎቶህ -->
-                <img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Full" class="full-img">
-            </center>
-        </div>
+        <!-- Main Layout with Side Photo -->
+        <div class="main-grid">
+            <div class="left-content">
+                <div class="card">
+                    <h2>About Me & Focus Areas</h2>
+                    <p style="font-size: 0.9rem; color: var(--muted-color);">
+                        I specialize in computer science fundamentals, algorithm efficiency, and practical AI implementations.
+                    </p>
+                    <ul class="focus-list">
+                        <li><b>Algorithms & Data Structures:</b> Dynamic programming, recursion, and time complexity optimization.</li>
+                        <li><b>Backend Engineering:</b> Building REST APIs with Python and FastAPI.</li>
+                        <li><b>Machine Learning:</b> Exploring AI integration and local LLM workflows.</li>
+                    </ul>
+                </div>
 
-        <!-- Leave a Comment Section -->
-        <div class="card">
-            <h2>Leave a Message / Comment</h2>
-            <form action="https://formspree.io/f/xbjnqkyw" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <textarea name="message" rows="4" placeholder="Write your comment here..." required></textarea>
-                <button type="submit" class="submit-btn">Send Comment</button>
-            </form>
+                <div class="card comment-box">
+                    <h2>Leave a Message</h2>
+                    <form action="https://formspree.io/f/xbjnqkyw" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <textarea name="message" rows="3" placeholder="Write your message..." required></textarea>
+                        <button type="submit" class="submit-btn">Send</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Side Full Photo -->
+            <div class="right-sidebar">
+                <div class="card" style="padding: 10px; text-align: center;">
+                    <img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Full" class="side-photo">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -223,115 +270,4 @@
     </script>
 </body>
 </html>
-            color: var(--accent-color);
-        }
 
-        .counter-box {
-            margin-top: 15px;
-            display: inline-block;
-            padding: 6px 14px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 0.9rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-        }
-
-        textarea, input[type="text"] {
-            width: 100%;
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .submit-btn {
-            background: var(--accent-color);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div><strong>Bewuketu Yilikal</strong></div>
-        <button class="theme-btn" onclick="toggleTheme()">☀️ / 🌙 Mode</button>
-    </header>
-
-    <div class="container">
-        <!-- Profile Section -->
-        <div class="profile-section">
-            <!-- የቅርብ ፎቶህ -->
-            <img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal Profile" class="profile-img">
-            <div class="bio-info">
-                <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
-                <p>High School Student | Aspiring AI & Machine Learning Engineer | Competitive Programmer</p>
-                
-                <!-- Visitor View Counter -->
-                <div class="counter-box">
-                    👁️ Total Page Views: <img src="https://profile-counter.glitch.me/bewuketuyilikal3/count.svg" alt="Views" style="vertical-align: middle;">
-                </div>
-
-                <!-- Social Links with Official Logos -->
-                <div class="social-links">
-                    <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="social-btn">
-                        <i class="fab fa-x-twitter"></i> Twitter
-                    </a>
-                    <a href="mailto:bewuketuyilikal@gmail.com" class="social-btn">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
-                    <a href="https://wa.me/251900000000" target="_blank" class="social-btn">
-                        <i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- About & Full Photo Section -->
-        <div class="card">
-            <h2>About Me</h2>
-            <p>I focus on computer science fundamentals, algorithm design, dynamic programming, and building full-stack applications with Python & FastAPI.</p>
-            <center>
-                <!-- የሙሉ አካል ፎቶህ -->
-                <img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Full" class="full-img">
-            </center>
-        </div>
-
-        <!-- Leave a Comment Section -->
-        <div class="card">
-            <h2>Leave a Message / Comment</h2>
-            <form action="https://formspree.io/f/xbjnqkyw" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <textarea name="message" rows="4" placeholder="Write your comment here..." required></textarea>
-                <button type="submit" class="submit-btn">Send Comment</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', targetTheme);
-        }
-    </script>
-</body>
-</html>
