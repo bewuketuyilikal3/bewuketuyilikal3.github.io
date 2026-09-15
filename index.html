@@ -90,13 +90,15 @@
         }
 
         .counter-box {
-            display: inline-block;
-            padding: 3px 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 4px;
-            font-size: 0.75rem;
-            color: var(--muted-color);
+            font-size: 0.8rem;
+            color: var(--text-color);
         }
 
         .social-links {
@@ -166,7 +168,6 @@
             line-height: 1.6;
         }
 
-        /* Compact Comment Form */
         .comment-box input, .comment-box textarea {
             width: 100%;
             background: var(--bg-color);
@@ -206,8 +207,9 @@
                 <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
                 <p>High School Student | Aspiring AI & Machine Learning Engineer | Competitive Programmer</p>
                 
+                <!-- Simple Clean Visitor Count -->
                 <div class="counter-box">
-                    👁️ Views: <img src="https://profile-counter.glitch.me/bewuketuyilikal3/count.svg" alt="Views" style="vertical-align: middle; height: 14px;">
+                    <i class="far fa-eye"></i> Views: <span id="visit-count">Loading...</span>
                 </div>
 
                 <div class="social-links">
@@ -217,7 +219,7 @@
                     <a href="https://twitter.com" target="_blank" class="social-btn">
                         <i class="fab fa-x-twitter"></i> Twitter
                     </a>
-                    <a href="mailto:bewuketuyilikal@gmail.com" class="social-btn">
+                    <a href="mailto:bewuketuyilikal3@gmail.com" class="social-btn">
                         <i class="fas fa-envelope"></i> Email
                     </a>
                     <a href="https://wa.me/251900000000" target="_blank" class="social-btn">
@@ -267,6 +269,16 @@
             const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', targetTheme);
         }
+
+        // Simple Counter API script
+        fetch('https://api.countapi.xyz/hit/bewuketuyilikal3.github.io/visits')
+            .then(res => res.json())
+            .then(res => {
+                document.getElementById('visit-count').innerText = res.value || '1';
+            })
+            .catch(() => {
+                document.getElementById('visit-count').innerText = '1+';
+            });
     </script>
 </body>
 </html>
