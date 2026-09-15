@@ -1,163 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bewuketu Yilikal - Personal Website</title>
+    <title>Bewuketu Yilikal - Portfolio</title>
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary: #38bdf8;
-            --border: #334155;
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --border-color: #30363d;
         }
 
         [data-theme="light"] {
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #0f172a;
-            --text-muted: #64748b;
-            --primary: #0284c7;
-            --border: #e2e8f0;
+            --bg-color: #ffffff;
+            --card-bg: #f6f8fa;
+            --text-color: #24292f;
+            --accent-color: #0969da;
+            --border-color: #d0d7de;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            background-color: var(--bg);
-            color: var(--text);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            transition: all 0.3s ease;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
+            padding: 20px 10%;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        h1 { font-size: 2rem; margin: 0; color: var(--text); }
-        .subtitle { color: var(--primary); font-weight: 600; margin-top: 5px; }
-
-        .theme-toggle {
-            background: var(--card-bg);
-            color: var(--text);
-            border: 1px solid var(--border);
+        .theme-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
             padding: 8px 16px;
             border-radius: 20px;
             cursor: pointer;
-            font-weight: 500;
         }
 
-        .section {
-            background: var(--card-bg);
-            padding: 25px;
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .profile-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+        }
+
+        .full-img {
+            width: 100%;
+            max-width: 450px;
             border-radius: 12px;
-            border: 1px solid var(--border);
-            margin-bottom: 25px;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
         }
 
-        h2 { color: var(--primary); margin-top: 0; font-size: 1.4rem; }
-        a { color: var(--primary); text-decoration: none; font-weight: 500; }
-        a:hover { text-decoration: underline; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1rem));
-            gap: 10px;
+        .bio-info h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
         }
 
-        .tag {
-            background: var(--bg);
-            padding: 6px 12px;
+        .bio-name {
+            font-weight: bold;
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: 0.2s;
+        }
+
+        .social-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .counter-box {
+            margin-top: 15px;
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 0.9rem;
-            border: 1px solid var(--border);
         }
 
-        footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 40px;
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div>
-            <h1>Bewuketu Yilikal</h1>
-            <div class="subtitle">Student | Programmer | Aspiring AI Engineer</div>
-        </div>
-        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Light</button>
+        <div><strong>Bewuketu Yilikal</strong></div>
+        <button class="theme-btn" onclick="toggleTheme()">☀️ / 🌙 Mode</button>
     </header>
 
-    <div class="section">
-        <h2>About Me</h2>
-        <p>Hello! I am Bewuketu Yilikal, an 11th-grade boarding student at Mizan Tepi University. I am deeply passionate about computer science, core algorithms, recursion, dynamic programming, and artificial intelligence.</p>
-        <p>I completed the <b>AddisCoder 2026</b> intensive computer science summer program and actively develop software projects at the MTU STEM Center.</p>
-    </div>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <!-- የቅርብ ፎቶህ -->
+            <img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal Profile" class="profile-img">
+            <div class="bio-info">
+                <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
+                <p>High School Student | Aspiring AI & Machine Learning Engineer | Competitive Programmer</p>
+                
+                <!-- Visitor View Counter -->
+                <div class="counter-box">
+                    👁️ Total Page Views: <img src="https://profile-counter.glitch.me/bewuketuyilikal3/count.svg" alt="Views" style="vertical-align: middle;">
+                </div>
 
-    <div class="section">
-        <h2>Technical Skills</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <span class="tag">Python</span>
-            <span class="tag">Algorithms & Big O</span>
-            <span class="tag">Dynamic Programming</span>
-            <span class="tag">FastAPI & Supabase</span>
-            <span class="tag">HTML / CSS / JS</span>
-            <span class="tag">Linux / Ubuntu</span>
-            <span class="tag">Local AI / Ollama</span>
+                <!-- Social Links with Official Logos -->
+                <div class="social-links">
+                    <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="social-btn">
+                        <i class="fab fa-x-twitter"></i> Twitter
+                    </a>
+                    <a href="mailto:bewuketuyilikal@gmail.com" class="social-btn">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="https://wa.me/251900000000" target="_blank" class="social-btn">
+                        <i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- About & Full Photo Section -->
+        <div class="card">
+            <h2>About Me</h2>
+            <p>I focus on computer science fundamentals, algorithm design, dynamic programming, and building full-stack applications with Python & FastAPI.</p>
+            <center>
+                <!-- የሙሉ አካል ፎቶህ -->
+                <img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Full" class="full-img">
+            </center>
+        </div>
+
+        <!-- Leave a Comment Section -->
+        <div class="card">
+            <h2>Leave a Message / Comment</h2>
+            <form action="https://formspree.io/f/xbjnqkyw" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <textarea name="message" rows="4" placeholder="Write your comment here..." required></textarea>
+                <button type="submit" class="submit-btn">Send Comment</button>
+            </form>
         </div>
     </div>
-
-    <div class="section">
-        <h2>Featured Projects</h2>
-        <ul>
-            <li>
-                <b>School Interactive Website:</b> A full-stack web application designed for interactive learning, featuring FastAPI backend and database integration.
-            </li>
-            <li>
-                <b>Local AI & Developer Tooling:</b> Configuring and deploying local language models using Termux, Open WebUI, and Aider environments.
-            </li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Links & Resources</h2>
-        <p>Find my work and profiles across the web:</p>
-        <ul>
-            <li><a href="https://github.com/bewuketuyilikal3">GitHub Profile</a></li>
-            <li><a href="https://www.wikidata.org/wiki/Q141457751">Wikidata Profile</a></li>
-        </ul>
-    </div>
-
-    <footer>
-        <p>© 2026 Bewuketu Yilikal. Built with HTML & CSS.</p>
-    </footer>
 
     <script>
         function toggleTheme() {
-            const body = document.body;
-            const btn = document.getElementById('themeBtn');
-            
-            if (body.getAttribute('data-theme') === 'light') {
-                body.removeAttribute('data-theme');
-                btn.textContent = '☀️ Light';
-            } else {
-                body.setAttribute('data-theme', 'light');
-                btn.textContent = '🌙 Dark';
-            }
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', targetTheme);
         }
     </script>
+</body>
+</html>
+            color: var(--accent-color);
+        }
 
+        .counter-box {
+            margin-top: 15px;
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div><strong>Bewuketu Yilikal</strong></div>
+        <button class="theme-btn" onclick="toggleTheme()">☀️ / 🌙 Mode</button>
+    </header>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <!-- የቅርብ ፎቶህ -->
+            <img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal Profile" class="profile-img">
+            <div class="bio-info">
+                <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
+                <p>High School Student | Aspiring AI & Machine Learning Engineer | Competitive Programmer</p>
+                
+                <!-- Visitor View Counter -->
+                <div class="counter-box">
+                    👁️ Total Page Views: <img src="https://profile-counter.glitch.me/bewuketuyilikal3/count.svg" alt="Views" style="vertical-align: middle;">
+                </div>
+
+                <!-- Social Links with Official Logos -->
+                <div class="social-links">
+                    <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="social-btn">
+                        <i class="fab fa-x-twitter"></i> Twitter
+                    </a>
+                    <a href="mailto:bewuketuyilikal@gmail.com" class="social-btn">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="https://wa.me/251900000000" target="_blank" class="social-btn">
+                        <i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- About & Full Photo Section -->
+        <div class="card">
+            <h2>About Me</h2>
+            <p>I focus on computer science fundamentals, algorithm design, dynamic programming, and building full-stack applications with Python & FastAPI.</p>
+            <center>
+                <!-- የሙሉ አካል ፎቶህ -->
+                <img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Full" class="full-img">
+            </center>
+        </div>
+
+        <!-- Leave a Comment Section -->
+        <div class="card">
+            <h2>Leave a Message / Comment</h2>
+            <form action="https://formspree.io/f/xbjnqkyw" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <textarea name="message" rows="4" placeholder="Write your comment here..." required></textarea>
+                <button type="submit" class="submit-btn">Send Comment</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', targetTheme);
+        }
+    </script>
 </body>
 </html>
