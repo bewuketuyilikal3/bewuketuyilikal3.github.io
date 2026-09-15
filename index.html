@@ -87,7 +87,6 @@
             font-size: 0.95rem;
         }
 
-        /* Clean Text-Only Visitor Counter */
         .counter-box {
             display: inline-block;
             padding: 4px 10px;
@@ -166,6 +165,10 @@
             line-height: 1.6;
         }
 
+        .focus-list li {
+            margin-bottom: 10px;
+        }
+
         .comment-box input, .comment-box textarea {
             width: 100%;
             background: var(--bg-color);
@@ -203,9 +206,9 @@
             <img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal" class="profile-img">
             <div class="hero-text">
                 <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
-                <p>High School Student | Aspiring AI & Machine Learning Engineer | Competitive Programmer</p>
+                <p>Grade 11 Student | Self-Taught AI Learner | Mizan-Tepi University STEM Center Member</p>
                 
-                <!-- Pure Text Visitor Count (No Image) -->
+                <!-- Pure Text Visitor Count -->
                 <div class="counter-box">
                     Views: <span id="visit-count">...</span>
                 </div>
@@ -227,18 +230,20 @@
             </div>
         </div>
 
-        <!-- Main Layout with Side Photo -->
+        <!-- Main Layout -->
         <div class="main-grid">
             <div class="left-content">
                 <div class="card">
-                    <h2>About Me & Focus Areas</h2>
-                    <p style="font-size: 0.9rem; color: var(--muted-color);">
-                        I specialize in computer science fundamentals, algorithm efficiency, and practical AI implementations.
+                    <h2>About Me</h2>
+                    <p style="font-size: 0.95rem; color: var(--muted-color); line-height: 1.6;">
+                        I am a <b>Grade 11 boarding student</b> at Mizan-Tepi University High School. I am a self-motivated learner passionate about programming and technology.
                     </p>
                     <ul class="focus-list">
-                        <li><b>Algorithms & Data Structures:</b> Dynamic programming, recursion, and time complexity optimization.</li>
-                        <li><b>Backend Engineering:</b> Building REST APIs with Python and FastAPI.</li>
-                        <li><b>Machine Learning:</b> Exploring AI integration and local LLM workflows.</li>
+                        <li><b>STEM Center & Research:</b> Active student member at the Mizan-Tepi University STEM Center, engaging in innovative projects and research.</li>
+                        <li><b>Python & Coding:</b> Learned Python programming through <b>AddisCoder</b>, building a solid foundation in computer science principles.</li>
+                        <li><b>Mobile App Development:</b> Built a custom mobile application for my school to assist with daily activities and learning.</li>
+                        <li><b>Self-Taught AI & ML:</b> Currently teaching myself Artificial Intelligence, Machine Learning, and fundamental algorithms step-by-step.</li>
+                        <li><b>Future Goal:</b> Aspiring to study advanced Artificial Intelligence, Deep Learning, and Machine Learning globally to create impactful technological solutions.</li>
                     </ul>
                 </div>
 
@@ -268,7 +273,7 @@
             document.documentElement.setAttribute('data-theme', targetTheme);
         }
 
-        // Fetch Live Counter (Pure Text)
+        // Live Counter Script (Pure Text)
         fetch('https://api.counterapi.dev/v1/bewuketuyilikal3_portfolio/views/up')
             .then(res => res.json())
             .then(data => {
