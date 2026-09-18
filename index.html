@@ -7,157 +7,288 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #000000;
-            --card-bg: #0a0a0a;
+            --bg-color: #120c08;
+            --bg-gradient: linear-gradient(135deg, #1c130d 0%, #0d0805 100%);
+            --glass-bg: rgba(45, 30, 20, 0.45);
+            --glass-border: rgba(210, 150, 100, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --text-color: #ffffff;
-            --muted-color: #aaaaaa;
-            --border-color: #222222;
+            --muted-color: #d1bfae;
+            --accent-color: #d97724;
+            --accent-hover: #f58e38;
+            --card-bg: rgba(35, 22, 14, 0.55);
         }
 
         [data-theme="light"] {
-            --bg-color: #ffffff;
-            --card-bg: #f9f9f9;
-            --text-color: #000000;
-            --muted-color: #555555;
-            --border-color: #dddddd;
+            --bg-color: #f7f3f0;
+            --bg-gradient: linear-gradient(135deg, #fcefe6 0%, #eae1d9 100%);
+            --glass-bg: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(180, 120, 70, 0.25);
+            --glass-shadow: 0 8px 32px 0 rgba(120, 80, 40, 0.12);
+            --text-color: #2b1a0e;
+            --muted-color: #6b5545;
+            --accent-color: #c45e0e;
+            --accent-hover: #a34b08;
+            --card-bg: rgba(255, 255, 255, 0.65);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.4s, color 0.4s;
+            min-height: 100vh;
         }
 
-        header {
+        /* Glassmorphism Reusable Style */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 16px;
+        }
+
+        /* Circular Floating Menu Button */
+        .nav-trigger {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 15px 8%;
-            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .nav-trigger:hover {
+            transform: scale(1.08);
+            border-color: var(--accent-color);
+        }
+
+        .nav-trigger i {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        /* Full Overlay Navigation Menu Drawer */
+        .nav-drawer {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100vh;
+            z-index: 999;
+            padding: 80px 25px 30px 25px;
+            transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .nav-drawer.active {
+            right: 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-bottom: 18px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: var(--glass-border);
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .theme-toggle-container {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 15px;
         }
 
         .theme-btn {
-            background: transparent;
-            border: 1px solid var(--border-color);
+            background: var(--glass-border);
+            border: 1px solid var(--glass-border);
             color: var(--text-color);
-            padding: 5px 12px;
-            border-radius: 4px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
         }
 
+        .theme-btn:hover {
+            background: var(--accent-color);
+            color: #fff;
+        }
+
+        /* Banner & Hero Section */
         .container {
-            max-width: 700px;
-            margin: 30px auto;
+            max-width: 750px;
+            margin: 0 auto 50px auto;
             padding: 0 15px;
         }
 
-        .hero-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border-radius: 0 0 20px 20px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-wrapper {
+            position: absolute;
+            bottom: -50px;
+            left: 30px;
         }
 
         .profile-img-container {
             position: relative;
             cursor: pointer;
+            display: inline-block;
         }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--border-color);
-            transition: transform 0.2s;
+            border: 4px solid var(--bg-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
         }
 
         .profile-img:hover {
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
 
         .click-hint {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--muted-color);
             text-align: center;
-            margin-top: 4px;
+            margin-top: 2px;
+        }
+
+        .hero-text {
+            padding: 0 10px;
+            margin-bottom: 25px;
         }
 
         .hero-text h1 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             margin: 0 0 5px 0;
         }
 
         .bio-name {
-            font-weight: bold;
+            color: var(--accent-color);
             font-style: italic;
         }
 
         .hero-text p {
             color: var(--muted-color);
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
             font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .counter-box {
             display: inline-block;
-            padding: 4px 10px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
+            padding: 4px 12px;
             font-size: 0.85rem;
             color: var(--text-color);
             font-weight: 500;
+            margin-bottom: 15px;
         }
 
         .social-links {
             display: flex;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .social-btn {
             display: flex;
             align-items: center;
-            gap: 5px;
-            padding: 5px 10px;
-            border-radius: 4px;
-            background: var(--card-bg);
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
             color: var(--text-color);
             text-decoration: none;
-            border: 1px solid var(--border-color);
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             transition: 0.2s;
         }
 
         .social-btn:hover {
-            background: var(--text-color);
-            color: var(--bg-color);
+            background: var(--accent-color);
+            color: #ffffff;
+            transform: translateY(-2px);
         }
 
+        /* Content Sections */
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 22px;
+            margin-bottom: 25px;
         }
 
         .card h2 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-top: 0;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 10px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .focus-list {
-            padding-left: 18px;
+            padding-left: 20px;
             color: var(--muted-color);
             font-size: 0.95rem;
             line-height: 1.6;
@@ -166,66 +297,156 @@
         .focus-list li {
             margin-bottom: 12px;
         }
+
+        .skill-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: var(--glass-border);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            color: var(--text-color);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* Overlay blur when menu is open */
+        .backdrop-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            z-index: 998;
+            display: none;
+        }
+
+        .backdrop-overlay.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div><strong>Bewuketu Yilikal</strong></div>
-        <button class="theme-btn" onclick="toggleTheme()">☀️ / 🌙 Mode</button>
-    </header>
+    <!-- Circular Glass Navigation Button -->
+    <div class="nav-trigger glass-panel" onclick="toggleMenu()">
+        <i class="fas fa-bars" id="menuIcon"></i>
+    </div>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero-section">
+    <!-- Backdrop Overlay -->
+    <div class="backdrop-overlay" id="backdrop" onclick="toggleMenu()"></div>
+
+    <!-- Glass Drawer Navigation Menu -->
+    <nav class="nav-drawer glass-panel" id="navDrawer">
+        <ul class="nav-links">
+            <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Skills</a></li>
+            <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> Participated In</a></li>
+            <li><a href="#learned" onclick="toggleMenu()"><i class="fas fa-book-reader"></i> Learned</a></li>
+            <li><a href="#contact" onclick="toggleMenu()"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#social" onclick="toggleMenu()"><i class="fas fa-share-alt"></i> Social Media</a></li>
+        </ul>
+
+        <div class="theme-toggle-container">
+            <button class="theme-btn" onclick="toggleTheme()">
+                <i class="fas fa-adjust"></i> <span>☀️ / 🌙 Mode</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header Banner -->
+    <div class="banner-container">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="AI Tech Banner" class="banner-img">
+        <div class="profile-wrapper">
             <div class="profile-img-container" onclick="togglePhoto()">
                 <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal" class="profile-img">
                 <div class="click-hint">👆 Click photo</div>
             </div>
+        </div>
+    </div>
 
-            <div class="hero-text">
-                <h1>Hi, I'm <span class="bio-name"><b><i>Bewuketu Yilikal</i></b></span></h1>
-                <p>Grade 11 Student | Self-Taught AI Learner | Mizan-Tepi University STEM Center Member</p>
-                
-                <!-- Pure Text Visitor Count -->
-                <div class="counter-box">
-                    Views: <span id="visit-count">...</span>
-                </div>
+    <div class="container" id="home">
+        <!-- Hero Section -->
+        <div class="hero-text">
+            <h1>Hi, I'm <span class="bio-name">Bewuketu Yilikal</span></h1>
+            <p>Grade 11 Boarding Student | Self-Taught AI & ML Learner | Mizan-Tepi University STEM Center Member</p>
+            
+            <div class="counter-box glass-panel">
+                <i class="fas fa-eye" style="color: var(--accent-color);"></i> Views: <span id="visit-count">...</span>
+            </div>
 
-                <div class="social-links">
-                    <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="social-btn">
-                        <i class="fab fa-x-twitter"></i> Twitter
-                    </a>
-                    <a href="mailto:bewuketuyilikal3@gmail.com" class="social-btn">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
-                    <a href="https://wa.me/251900000000" target="_blank" class="social-btn">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                </div>
+            <div class="social-links" id="social">
+                <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="mailto:bewuketuyilikal3@gmail.com" class="social-btn glass-panel" id="contact">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://wa.me/251900000000" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
             </div>
         </div>
 
-        <!-- About Section -->
-        <div class="card">
-            <h2>About Me</h2>
-            <p style="font-size: 0.95rem; color: var(--muted-color); line-height: 1.6;">
-                I am a <b>Grade 11 boarding student</b> at Mizan-Tepi University High School. I am a self-motivated learner passionate about programming and technology.
-            </p>
+        <!-- Skills Section -->
+        <div class="card glass-panel" id="skills">
+            <h2><i class="fas fa-laptop-code"></i> Skills</h2>
+            <div class="skill-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Artificial Intelligence</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Data Structures & Algorithms</span>
+                <span class="tag">Mobile App Development</span>
+                <span class="tag">HTML / CSS / JS</span>
+            </div>
+        </div>
+
+        <!-- Participated In Section -->
+        <div class="card glass-panel" id="participated">
+            <h2><i class="fas fa-hands-helping"></i> Participated In</h2>
             <ul class="focus-list">
-                <li><b>STEM Center & Research:</b> Active student member at the Mizan-Tepi University STEM Center, engaging in innovative projects and research.</li>
-                <li><b>Python & Coding:</b> Learned Python programming through <b>AddisCoder</b>, building a solid foundation in computer science principles.</li>
-                <li><b>Mobile App Development:</b> Built a custom mobile application for my school to assist with daily activities and learning.</li>
-                <li><b>Self-Taught AI & ML:</b> Currently teaching myself Artificial Intelligence, Machine Learning, and fundamental algorithms step-by-step.</li>
-                <li><b>Future Goal:</b> Aspiring to study advanced Artificial Intelligence, Deep Learning, and Machine Learning globally to create impactful technological solutions.</li>
+                <li><b>AddisCoder Summer Program:</b> Participated in an intensive algorithms and Python computer science course led by top university instructors.</li>
+                <li><b>MTU STEM Center Projects:</b> Actively involved in innovation and research activities as a high school boarding student member.</li>
+            </ul>
+        </div>
+
+        <!-- Learned Section -->
+        <div class="card glass-panel" id="learned">
+            <h2><i class="fas fa-graduation-cap"></i> Learned & Learning Journey</h2>
+            <ul class="focus-list">
+                <li><b>Computer Science Principles:</b> Solved complex algorithmic challenges, Big-O analysis, and recursion.</li>
+                <li><b>Custom Mobile Application:</b> Built a functional mobile app tailored for high school learning and daily management.</li>
+                <li><b>Self-Taught AI/ML Roadmaps:</b> Continuously mastering neural networks, deep learning frameworks, and chip design basics.</li>
             </ul>
         </div>
     </div>
 
     <script>
+        // Toggle Drawer Navigation
+        function toggleMenu() {
+            const navDrawer = document.getElementById('navDrawer');
+            const backdrop = document.getElementById('backdrop');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            navDrawer.classList.toggle('active');
+            backdrop.classList.toggle('active');
+
+            if(navDrawer.classList.contains('active')) {
+                menuIcon.className = 'fas fa-times';
+            } else {
+                menuIcon.className = 'fas fa-bars';
+            }
+        }
+
         // Toggle Dark/Light Theme
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
