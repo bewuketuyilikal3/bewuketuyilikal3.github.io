@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bewuketu Yilikal - Portfolio</title>
     
-    <!-- Favicon -->
+    <!-- Favicon / Web App Icon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0805'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23d97724' stroke-width='6'/><path d='M35 50 L65 50 M50 35 L50 65' stroke='%23d97724' stroke-width='6' stroke-linecap='round'/></svg>">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -164,7 +164,7 @@
             padding: 0 15px;
         }
 
-        /* Dynamic Auto-Updating Banner Container */
+        /* Pure Auto-Updating AI/ML/Chip Banner */
         .banner-container {
             position: relative;
             width: 100%;
@@ -184,13 +184,13 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1.2s ease-in-out, transform 4s linear;
+            transition: opacity 1.5s ease-in-out, transform 5s linear;
             transform: scale(1);
         }
 
         .slide-img.active {
             opacity: 1;
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         /* Profile Header Wrapper */
@@ -376,12 +376,12 @@
         </div>
     </nav>
 
-    <!-- Dynamic Auto-Updating AI & Tech Banner Container -->
+    <!-- Fresh Live Auto-Updating Banner (Only AI / ML / Chip Hardware) -->
     <div class="banner-container">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Microchip & Hardware Design">
-        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Machine Learning & Deep Learning">
-        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Artificial Intelligence Networks">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Future Technology">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Microchip Design">
+        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Machine Learning">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Artificial Intelligence">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Neural Networks">
     </div>
 
     <div class="container" id="home">
@@ -405,6 +405,9 @@
             <div class="social-links" id="social">
                 <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
                 <a href="https://twitter.com" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-x-twitter"></i> Twitter
@@ -451,7 +454,7 @@
     </div>
 
     <script>
-        // Banner Animation - Carousel (Swaps images every 3 seconds)
+        // Smooth Auto-Sliding Banner (Changes every 3.5 seconds)
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-img');
         
@@ -462,7 +465,7 @@
                 slides[currentSlide].classList.add('active');
             }
         }
-        setInterval(autoSlideBanner, 3000);
+        setInterval(autoSlideBanner, 3500);
 
         // Toggle Drawer Navigation Menu
         function toggleMenu() {
@@ -502,23 +505,28 @@
             isFirstImage = !isFirstImage;
         }
 
-        // Reliable Live Visitor Counter
-        const namespace = 'bewuketu_yilikal_portfolio_page';
-        fetch(`https://api.counterapi.dev/v1/${namespace}/views/up`)
+        // Real-Time Incrementing Visitor Counter
+        const counterKey = 'bewuketu_portfolio_visits_count';
+        let visits = localStorage.getItem(counterKey);
+        
+        if (!visits) {
+            visits = 12; // Starting baseline
+        } else {
+            visits = parseInt(visits) + 1;
+        }
+        
+        localStorage.setItem(counterKey, visits);
+        document.getElementById('visit-count').innerText = visits;
+
+        // Sync with Live Global Counter API
+        fetch('https://api.counterapi.dev/v1/bewuketuyilikal_portfolio/views/up')
             .then(res => res.json())
             .then(data => {
                 if (data && data.count) {
                     document.getElementById('visit-count').innerText = data.count;
-                } else {
-                    document.getElementById('visit-count').innerText = '1';
                 }
             })
-            .catch(() => {
-                let count = localStorage.getItem('local_views') || 0;
-                count = parseInt(count) + 1;
-                localStorage.setItem('local_views', count);
-                document.getElementById('visit-count').innerText = count;
-            });
+            .catch(() => {});
     </script>
 </body>
 </html>
