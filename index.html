@@ -5,34 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bewuketu Yilikal - Portfolio</title>
     
-    <!-- Favicon (Web App Icon) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0805'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23d97724' stroke-width='6'/><path d='M35 50 L65 50 M50 35 L50 65' stroke='%23d97724' stroke-width='6' stroke-linecap='round'/></svg>">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #0d0805;
-            --bg-gradient: #0d0805;
             --glass-bg: rgba(30, 18, 10, 0.7);
             --glass-border: rgba(210, 150, 100, 0.15);
             --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
             --text-color: #ffffff;
             --muted-color: #d1bfae;
             --accent-color: #d97724;
-            --accent-hover: #f58e38;
             --card-bg: rgba(25, 15, 8, 0.85);
         }
 
         [data-theme="light"] {
             --bg-color: #f7f3f0;
-            --bg-gradient: #f7f3f0;
             --glass-bg: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(180, 120, 70, 0.25);
             --glass-shadow: 0 8px 32px 0 rgba(120, 80, 40, 0.12);
             --text-color: #2b1a0e;
             --muted-color: #6b5545;
             --accent-color: #c45e0e;
-            --accent-hover: #a34b08;
             --card-bg: rgba(255, 255, 255, 0.9);
         }
 
@@ -41,11 +37,7 @@
             scroll-behavior: smooth;
         }
 
-        html {
-            background-color: var(--bg-color);
-        }
-
-        body {
+        html, body {
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -172,7 +164,7 @@
             padding: 0 15px;
         }
 
-        /* Dynamic Auto-Updating Banner */
+        /* Dynamic Auto-Updating Banner Container */
         .banner-container {
             position: relative;
             width: 100%;
@@ -192,7 +184,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1s ease-in-out, transform 4s linear;
+            transition: opacity 1.2s ease-in-out, transform 4s linear;
             transform: scale(1);
         }
 
@@ -332,9 +324,9 @@
 
         .tag {
             background: var(--glass-border);
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--text-color);
             border: 1px solid var(--glass-border);
         }
@@ -385,8 +377,11 @@
     </nav>
 
     <!-- Dynamic Auto-Updating AI & Tech Banner Container -->
-    <div class="banner-container" id="bannerContainer">
-        <!-- Images dynamically loaded from JavaScript -->
+    <div class="banner-container">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Microchip & Hardware Design">
+        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Machine Learning & Deep Learning">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Artificial Intelligence Networks">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Future Technology">
     </div>
 
     <div class="container" id="home">
@@ -432,8 +427,6 @@
                 <span class="tag">Machine Learning</span>
                 <span class="tag">Chip Designing Concepts</span>
                 <span class="tag">Data Structures & Algorithms</span>
-                <span class="tag">Mobile App Development</span>
-                <span class="tag">HTML / CSS / JS</span>
             </div>
         </div>
 
@@ -458,32 +451,7 @@
     </div>
 
     <script>
-        // Dynamic Auto-Refreshing Images for Banner
-        const techTopics = ['microchip', 'machine-learning', 'artificial-intelligence', 'coding', 'quantum-computing'];
-        const bannerContainer = document.getElementById('bannerContainer');
-        
-        // Randomize images on every refresh
-        const randomImages = techTopics.map(topic => 
-            `https://source.unsplash.com/1200x400/?${topic}&sig=${Math.floor(Math.random() * 1000)}`
-        );
-
-        // Fallback high quality Tech Images if dynamic API delays
-        const defaultImages = [
-            'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop'
-        ];
-
-        defaultImages.forEach((src, idx) => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.className = `slide-img ${idx === 0 ? 'active' : ''}`;
-            img.alt = 'AI & Chip Technology';
-            bannerContainer.appendChild(img);
-        });
-
-        // Banner Animation - Carousel
+        // Banner Animation - Carousel (Swaps images every 3 seconds)
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-img');
         
@@ -534,7 +502,7 @@
             isFirstImage = !isFirstImage;
         }
 
-        // Reliable Live Visitor Counter (Increments on page view)
+        // Reliable Live Visitor Counter
         const namespace = 'bewuketu_yilikal_portfolio_page';
         fetch(`https://api.counterapi.dev/v1/${namespace}/views/up`)
             .then(res => res.json())
@@ -546,7 +514,6 @@
                 }
             })
             .catch(() => {
-                // Fallback to secondary counter if network fails
                 let count = localStorage.getItem('local_views') || 0;
                 count = parseInt(count) + 1;
                 localStorage.setItem('local_views', count);
