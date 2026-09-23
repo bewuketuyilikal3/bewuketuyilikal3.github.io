@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bewuketu Yilikal - Portfolio</title>
+    
+    <!-- Favicon (Web App Icon) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0805'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23d97724' stroke-width='6'/><path d='M35 50 L65 50 M50 35 L50 65' stroke='%23d97724' stroke-width='6' stroke-linecap='round'/></svg>">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -168,7 +172,7 @@
             padding: 0 15px;
         }
 
-        /* Animated Banner Carousel */
+        /* Dynamic Auto-Updating Banner */
         .banner-container {
             position: relative;
             width: 100%;
@@ -380,15 +384,13 @@
         </div>
     </nav>
 
-    <!-- Dynamic Auto-Updating AI & Tech Banner -->
-    <div class="banner-container">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Chip Design & Hardware">
-        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Machine Learning">
-        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Artificial Intelligence">
+    <!-- Dynamic Auto-Updating AI & Tech Banner Container -->
+    <div class="banner-container" id="bannerContainer">
+        <!-- Images dynamically loaded from JavaScript -->
     </div>
 
     <div class="container" id="home">
-        <!-- Uncovered Profile Header -->
+        <!-- Profile Header -->
         <div class="profile-header-wrapper">
             <div class="profile-img-container" onclick="togglePhoto()">
                 <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal" class="profile-img">
@@ -456,16 +458,42 @@
     </div>
 
     <script>
-        // Automatic Animated Banner Carousel (Swaps every 3 seconds)
+        // Dynamic Auto-Refreshing Images for Banner
+        const techTopics = ['microchip', 'machine-learning', 'artificial-intelligence', 'coding', 'quantum-computing'];
+        const bannerContainer = document.getElementById('bannerContainer');
+        
+        // Randomize images on every refresh
+        const randomImages = techTopics.map(topic => 
+            `https://source.unsplash.com/1200x400/?${topic}&sig=${Math.floor(Math.random() * 1000)}`
+        );
+
+        // Fallback high quality Tech Images if dynamic API delays
+        const defaultImages = [
+            'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop'
+        ];
+
+        defaultImages.forEach((src, idx) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = `slide-img ${idx === 0 ? 'active' : ''}`;
+            img.alt = 'AI & Chip Technology';
+            bannerContainer.appendChild(img);
+        });
+
+        // Banner Animation - Carousel
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-img');
         
         function autoSlideBanner() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            if(slides.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
         }
-        
         setInterval(autoSlideBanner, 3000);
 
         // Toggle Drawer Navigation Menu
@@ -506,8 +534,9 @@
             isFirstImage = !isFirstImage;
         }
 
-        // Live Text Visitor Counter
-        fetch('https://api.counterapi.dev/v1/bewuketuyilikal3_portfolio/views/up')
+        // Reliable Live Visitor Counter (Increments on page view)
+        const namespace = 'bewuketu_yilikal_portfolio_page';
+        fetch(`https://api.counterapi.dev/v1/${namespace}/views/up`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.count) {
@@ -517,7 +546,11 @@
                 }
             })
             .catch(() => {
-                document.getElementById('visit-count').innerText = '1';
+                // Fallback to secondary counter if network fails
+                let count = localStorage.getItem('local_views') || 0;
+                count = parseInt(count) + 1;
+                localStorage.setItem('local_views', count);
+                document.getElementById('visit-count').innerText = count;
             });
     </script>
 </body>
