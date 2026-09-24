@@ -7,7 +7,7 @@
     
     <!-- Open Graph / Meta Tags for Google Search & SEO -->
     <meta name="description" content="Bewuketu Yilikal - Grade 11 Boarding Student, Self-Taught AI & ML Learner, and Member at Mizan-Tepi University STEM Center.">
-    <meta name="keywords" content="Bewuketu Yilikal, Bewuketu, Yilikal, AI Engineer Ethiopia, MTU STEM, AddisCoder">
+    <meta name="keywords" content="Bewuketu Yilikal, Bewuketu, Yilikal, AI Engineer Ethiopia, MTU STEM, AddisCoder, Code-R Swart">
     <meta name="author" content="Bewuketu Yilikal">
 
     <!-- Social Media Preview Tags (Telegram, WhatsApp, LinkedIn) -->
@@ -343,6 +343,55 @@
             border: 1px solid var(--glass-border);
         }
 
+        /* Project Specific Styles */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: rgba(20, 10, 5, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 10px;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--muted-color);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .project-btn {
+            align-self: flex-start;
+            margin-top: 6px;
+            background: var(--accent-color);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .project-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
         .backdrop-overlay {
             position: fixed;
             top: 0;
@@ -374,6 +423,7 @@
     <nav class="nav-drawer glass-panel" id="navDrawer">
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#projects" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects</a></li>
             <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Skills for the Future</a></li>
             <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> Participated In</a></li>
             <li><a href="#learned" onclick="toggleMenu()"><i class="fas fa-book-reader"></i> Learned</a></li>
@@ -435,6 +485,30 @@
                 </a>
                 <a href="https://wa.me/251900000000" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Featured Projects Section -->
+        <div class="card glass-panel" id="projects">
+            <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
+            <div class="project-card">
+                <div class="project-title">
+                    <i class="fas fa-terminal" style="color: var(--accent-color);"></i> Code-R Swart
+                </div>
+                <p class="project-desc">
+                    <strong>Code-R Swart</strong> is a full-stack web application designed for app builders and developers. 
+                    It features a custom-built, VS Code-like interface on the frontend paired with a robust backend API architecture. 
+                    Built and maintained by me, the platform continuously receives new updates and feature enhancements.
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">VS Code UI</span>
+                    <span class="tag">Custom Backend API</span>
+                    <span class="tag">Web IDE</span>
+                    <span class="tag">App Builder Tool</span>
+                </div>
+                <a href="https://code-r-swart.vercel.app" target="_blank" class="project-btn">
+                    <i class="fas fa-external-link-alt"></i> Open Project
                 </a>
             </div>
         </div>
