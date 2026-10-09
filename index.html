@@ -6,17 +6,17 @@
     <title>Bewuketu Yilikal - Portfolio</title>
     
     <!-- Open Graph / Meta Tags for Google Search & SEO -->
-    <meta name="description" content="Bewuketu Yilikal - Grade 11 Boarding Student, Self-Taught AI & ML Learner, and Member at Mizan-Tepi University STEM Center.">
-    <meta name="keywords" content="Bewuketu Yilikal, Bewuketu, Yilikal, AI Engineer Ethiopia, MTU STEM, AddisCoder, Code-R Swart">
+    <meta name="description" content="Official Portfolio of Bewuketu Yilikal - Sheka Zone Special Boarding School Student at Mizan-Tepi University, AI/ML Learner, and Robotics Enthusiast.">
+    <meta name="keywords" content="Bewuketu Yilikal, Bewuketu, Yilikal, Sheka Special Boarding School, MTU STEM, AddisCoder, AI Engineer Ethiopia, Code-R Swart">
     <meta name="author" content="Bewuketu Yilikal">
 
-    <!-- Social Media Preview Tags (Telegram, WhatsApp, LinkedIn) -->
-    <meta property="og:title" content="Bewuketu Yilikal - Personal Portfolio">
-    <meta property="og:description" content="Official Portfolio of Bewuketu Yilikal, AI & ML Enthusiast.">
+    <!-- Social Media Preview Tags -->
+    <meta property="og:title" content="Bewuketu Yilikal - AI & Robotics Enthusiast">
+    <meta property="og:description" content="Portfolio of Bewuketu Yilikal - Natural Science Boarding Student, Python Developer, and Future AI Engineer.">
     <meta property="og:image" content="https://bewuketuyilikal3.github.io/IMG_20260915_114804_267%20(1).jpg">
     <meta property="og:url" content="https://bewuketuyilikal3.github.io">
 
-    <!-- Favicon / Web App Icon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0805'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23d97724' stroke-width='6'/><path d='M35 50 L65 50 M50 35 L50 65' stroke='%23d97724' stroke-width='6' stroke-linecap='round'/></svg>">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -69,7 +69,7 @@
             border-radius: 16px;
         }
 
-        /* Circular Menu Trigger */
+        /* Menu Trigger Button */
         .nav-trigger {
             position: fixed;
             top: 20px;
@@ -176,7 +176,7 @@
             padding: 0 15px;
         }
 
-        /* Optimized Banner Carousel (10 AI/ML/Chip Images) */
+        /* Banner Carousel */
         .banner-container {
             position: relative;
             width: 100%;
@@ -343,7 +343,7 @@
             border: 1px solid var(--glass-border);
         }
 
-        /* Project Specific Styles */
+        /* Project Card */
         .project-card {
             display: flex;
             flex-direction: column;
@@ -411,7 +411,7 @@
 </head>
 <body>
 
-    <!-- Circular Navigation Trigger -->
+    <!-- Floating Navigation Menu Button -->
     <div class="nav-trigger glass-panel" onclick="toggleMenu()">
         <i class="fas fa-bars" id="menuIcon"></i>
     </div>
@@ -419,16 +419,15 @@
     <!-- Backdrop Overlay -->
     <div class="backdrop-overlay" id="backdrop" onclick="toggleMenu()"></div>
 
-    <!-- Navigation Drawer -->
+    <!-- Navigation Drawer (Expanded Links) -->
     <nav class="nav-drawer glass-panel" id="navDrawer">
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#projects" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects</a></li>
-            <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Skills for the Future</a></li>
-            <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> Participated In</a></li>
-            <li><a href="#learned" onclick="toggleMenu()"><i class="fas fa-book-reader"></i> Learned</a></li>
-            <li><a href="#contact" onclick="toggleMenu()"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li><a href="#social" onclick="toggleMenu()"><i class="fas fa-share-alt"></i> Social Media</a></li>
+            <li><a href="#about" onclick="toggleMenu()"><i class="fas fa-user-graduate"></i> My Biography & Journey</a></li>
+            <li><a href="#projects" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects & Endeavors</a></li>
+            <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Skills & Technical Focus</a></li>
+            <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> Programs & STEM Experience</a></li>
+            <li><a href="#contact" onclick="toggleMenu()"><i class="fas fa-paper-plane"></i> Contact Me</a></li>
         </ul>
 
         <div class="theme-toggle-container">
@@ -438,18 +437,13 @@
         </div>
     </nav>
 
-    <!-- 10 High Quality Tech/AI Images Banner Slider -->
+    <!-- Banner Image Slider -->
     <div class="banner-container">
         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Microchip Design" loading="lazy">
         <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Machine Learning" loading="lazy">
         <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Artificial Intelligence" loading="lazy">
         <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Neural Networks" loading="lazy">
         <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Quantum Hardware" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Tech Architecture" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Microprocessor" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Data Science Server" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="AI Workspace" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Futuristic Tech" loading="lazy">
     </div>
 
     <div class="container" id="home">
@@ -464,23 +458,24 @@
         <!-- Hero Text Section -->
         <div class="hero-text">
             <h1>Hi, I'm <span class="bio-name">Bewuketu Yilikal</span></h1>
-            <p>Grade 11 Boarding Student | Self-Taught AI & ML Learner | Mizan-Tepi University STEM Center Member</p>
+            <p>Sheka Zone Special Boarding School Student at Mizan-Tepi University | Natural Science Stream | Self-Taught AI & ML Enthusiast | Robotics Developer</p>
             
             <div class="counter-box glass-panel">
                 <i class="fas fa-eye" style="color: var(--accent-color);"></i> Views: <span id="visit-count">...</span>
             </div>
 
+            <!-- Social Media Buttons -->
             <div class="social-links" id="social">
+                <a href="https://t.me/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
                 <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-github"></i> GitHub
                 </a>
                 <a href="https://www.linkedin.com/in/bewuketu-yilikal-1243b7428" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
-                <a href="https://twitter.com" target="_blank" class="social-btn glass-panel">
-                    <i class="fab fa-x-twitter"></i> Twitter
-                </a>
-                <a href="mailto:bewuketuyilikal3@gmail.com" class="social-btn glass-panel" id="contact">
+                <a href="mailto:bewuketuyilikal3@gmail.com" class="social-btn glass-panel">
                     <i class="fas fa-envelope"></i> Email
                 </a>
                 <a href="https://wa.me/251900000000" target="_blank" class="social-btn glass-panel">
@@ -489,27 +484,55 @@
             </div>
         </div>
 
+        <!-- Comprehensive Biography & Life Journey Section -->
+        <div class="card glass-panel" id="about">
+            <h2><i class="fas fa-user-graduate"></i> Biography & Academic Journey</h2>
+            <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
+                My journey began in <b>Andracha Woreda, Sheka Zone</b>, where I completed my elementary and primary education from Grade 1 through Grade 9. Demonstrating strong academic excellence, I was selected to join the prestigious <b>Mizan-Tepi University Sheka Zone Special Boarding School</b>, where I completed Grade 10 and am currently an 11th Grade student in the <b>Natural Science stream</b>.
+            </p>
+            <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
+                In <b>2018 E.C.</b>, I officially joined the <b>Mizan-Tepi University STEM Center</b>, immersing myself in Electronics, Robotics, and Computer Programming—specifically mastering <b>Python</b>. Over time, I hands-on built hardware innovations including <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Autonomous Robots</i>.
+            </p>
+            <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
+                In <b>2026</b>, I participated in the prestigious <b>AddisCoder Summer Program</b> in Addis Ababa, sharpening my knowledge in advanced data structures, algorithms, and computational thinking. Alongside my deep commitment to Mathematics, Physics, Chemistry, and Information & Communication Technology (ICT), I am actively training myself in <b>Large Language Models (LLMs), AI architectures, and Machine Learning</b> with the ultimate ambition of becoming a lead AI Engineer and Chip Designer.
+            </p>
+        </div>
+
         <!-- Featured Projects Section -->
         <div class="card glass-panel" id="projects">
             <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
+            
+            <!-- Project 1: Code-R Swart -->
             <div class="project-card">
                 <div class="project-title">
                     <i class="fas fa-terminal" style="color: var(--accent-color);"></i> Code-R Swart
                 </div>
                 <p class="project-desc">
-                    <strong>Code-R Swart</strong> is a full-stack web application designed for app builders and developers. 
-                    It features a custom-built, VS Code-like interface on the frontend paired with a robust backend API architecture. 
-                    Built and maintained by me, the platform continuously receives new updates and feature enhancements.
+                    A full-stack web application designed for developers and app builders. Features a VS Code-like IDE interface on the frontend paired with a robust custom backend API.
                 </p>
                 <div class="skill-tags">
                     <span class="tag">VS Code UI</span>
-                    <span class="tag">Custom Backend API</span>
+                    <span class="tag">Backend API</span>
                     <span class="tag">Web IDE</span>
-                    <span class="tag">App Builder Tool</span>
                 </div>
                 <a href="https://code-r-swart.vercel.app" target="_blank" class="project-btn">
                     <i class="fas fa-external-link-alt"></i> Open Project
                 </a>
+            </div>
+
+            <!-- Project 2: Sheka Boarding Website -->
+            <div class="project-card" style="margin-top: 15px;">
+                <div class="project-title">
+                    <i class="fas fa-school" style="color: var(--accent-color);"></i> Sheka Boarding School Official Portal
+                </div>
+                <p class="project-desc">
+                    Currently building and deploying a comprehensive web portal for <b>Mizan-Tepi University Sheka Zone Special Boarding School</b> to digitalize student services and school communication.
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">In Development</span>
+                    <span class="tag">Full-Stack</span>
+                    <span class="tag">School Utility</span>
+                </div>
             </div>
         </div>
 
@@ -517,36 +540,52 @@
         <div class="card glass-panel" id="skills">
             <h2><i class="fas fa-laptop-code"></i> Skills for the Future</h2>
             <div class="skill-tags">
-                <span class="tag">Python</span>
-                <span class="tag">Artificial Intelligence</span>
-                <span class="tag">Machine Learning</span>
-                <span class="tag">Chip Designing Concepts</span>
+                <span class="tag">Python Programming</span>
+                <span class="tag">Artificial Intelligence (AI)</span>
+                <span class="tag">Machine Learning (ML)</span>
+                <span class="tag">Large Language Models (LLMs)</span>
+                <span class="tag">Robotics & Electronics</span>
                 <span class="tag">Data Structures & Algorithms</span>
+                <span class="tag">Chip Designing Concepts</span>
+                <span class="tag">Natural Science Foundations</span>
             </div>
         </div>
 
-        <!-- Participated In Section -->
+        <!-- Programs & Experience Section -->
         <div class="card glass-panel" id="participated">
-            <h2><i class="fas fa-hands-helping"></i> Participated In</h2>
+            <h2><i class="fas fa-hands-helping"></i> Programs & STEM Experience</h2>
             <ul class="focus-list">
-                <li><b>AddisCoder Summer Program:</b> Participated in an intensive computer science course focusing on algorithms and Python.</li>
-                <li><b>MTU STEM Center Projects:</b> Actively engaged in tech innovation and practical scientific projects.</li>
+                <li><b>AddisCoder 2026 Summer Program:</b> Completed intensive algorithm analysis and Python training led by international computer science instructors.</li>
+                <li><b>MTU STEM Center (Since 2018 E.C.):</b> Developed practical engineering skills in circuit design, microcontroller programming, and robotics hardware.</li>
+                <li><b>Robotics Engineering:</b> Engineered functional <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Autonomous Mobile Platforms</i>.</li>
             </ul>
         </div>
 
-        <!-- Learned Section -->
-        <div class="card glass-panel" id="learned">
-            <h2><i class="fas fa-graduation-cap"></i> Learned & Learning Journey</h2>
-            <ul class="focus-list">
-                <li><b>Computer Science Foundations:</b> Mastered recursion, time complexity analysis, and graph algorithms.</li>
-                <li><b>Mobile App Project:</b> Designed and deployed a functional mobile application for high school utilities.</li>
-                <li><b>Future AI Engineer & Chip Designer:</b> Pursuing self-directed learning in neural network architectures and hardware design.</li>
+        <!-- Dedicated Contact Me Section -->
+        <div class="card glass-panel" id="contact">
+            <h2><i class="fas fa-paper-plane"></i> Contact Me</h2>
+            <p style="color: var(--muted-color); font-size: 0.92rem; line-height: 1.6;">
+                Feel free to connect with me for technical discussions, AI/ML collaboration, or academic inquiries:
+            </p>
+            <ul class="focus-list" style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 10px;">
+                    <i class="fab fa-telegram-plane" style="color: var(--accent-color);"></i> <b>Telegram:</b> <a href="https://t.me/bewuketuyilikal" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal</a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <i class="fas fa-envelope" style="color: var(--accent-color);"></i> <b>Email:</b> <a href="mailto:bewuketuyilikal3@gmail.com" style="color: var(--text-color); text-decoration: none;">bewuketuyilikal3@gmail.com</a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <i class="fab fa-linkedin" style="color: var(--accent-color);"></i> <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/bewuketu-yilikal-1243b7428" target="_blank" style="color: var(--text-color); text-decoration: none;">bewuketu-yilikal-1243b7428</a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <i class="fab fa-whatsapp" style="color: var(--accent-color);"></i> <b>WhatsApp:</b> <a href="https://wa.me/251900000000" target="_blank" style="color: var(--text-color); text-decoration: none;">Direct Chat</a>
+                </li>
             </ul>
         </div>
     </div>
 
     <script>
-        // Auto-Sliding Banner (Changes every 4 seconds)
+        // Auto-Sliding Banner Carousel
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-img');
         
@@ -597,19 +636,17 @@
             isFirstImage = !isFirstImage;
         }
 
-        // True Unique Visitor Counter (Does NOT increment on self-refresh)
+        // True Unique Visitor Counter
         const storageKey = 'bewuketu_visited_session';
         const countKey = 'bewuketu_global_unique_views';
         
         let uniqueViews = parseInt(localStorage.getItem(countKey)) || 18;
 
         if (!sessionStorage.getItem(storageKey)) {
-            // New Session / New Visitor
             uniqueViews += 1;
             localStorage.setItem(countKey, uniqueViews);
             sessionStorage.setItem(storageKey, 'true');
 
-            // Sync with remote counter ONLY on new unique visits
             fetch('https://api.counterapi.dev/v1/bewuketuyilikal_portfolio_v2/views/up')
                 .then(res => res.json())
                 .then(data => {
@@ -623,7 +660,6 @@
                     document.getElementById('visit-count').innerText = uniqueViews;
                 });
         } else {
-            // Already visited in this session, show existing count without incrementing
             document.getElementById('visit-count').innerText = uniqueViews;
         }
     </script>
