@@ -149,7 +149,7 @@
             height: 100vh;
             z-index: 999;
             padding: 65px 16px 20px 16px;
-            transition: right 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+            transition: right 0.33s cubic-bezier(0.1, 0.9, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -264,11 +264,11 @@
             pointer-events: none;
         }
 
-        /* Carousel Navigation Dots (Positioned Perfectly on the BOTTOM RIGHT) */
+        /* Carousel Navigation Dots (Bottom Right) */
         .dots-indicator {
             position: absolute;
             bottom: 14px;
-            right: 18px; /* Shifted to Right side so photo doesn't cover it */
+            right: 18px;
             display: flex;
             gap: 8px;
             z-index: 5;
@@ -361,18 +361,9 @@
 
         .hero-text p {
             color: var(--muted-color);
-            margin: 0 0 12px 0;
+            margin: 0 0 15px 0;
             font-size: 0.95rem;
             line-height: 1.5;
-        }
-
-        .counter-box {
-            display: inline-block;
-            padding: 6px 14px;
-            font-size: 0.85rem;
-            color: var(--text-color);
-            font-weight: 500;
-            margin-bottom: 15px;
         }
 
         .social-links {
@@ -416,7 +407,7 @@
             gap: 10px;
         }
 
-        /* Robot / Computer Sci-Fi Styled Terminal Typography for Biography */
+        /* Robot / Computer Sci-Fi Styled Terminal Typography */
         .robot-terminal-text {
             font-family: 'Share Tech Mono', 'Fira Code', monospace;
             background: rgba(10, 15, 10, 0.65);
@@ -582,7 +573,7 @@
             </div>
         </div>
 
-        <!-- Dots Indicator (Moved to Right Side for Full Visibility) -->
+        <!-- Dots Indicator -->
         <div class="dots-indicator" id="dotsContainer">
             <div class="dot active" onclick="scrollToSlide(0)"></div>
             <div class="dot" onclick="scrollToSlide(1)"></div>
@@ -606,10 +597,6 @@
         <div class="hero-text">
             <h1>Hi, I'm <span class="bio-name">Bewuketu Yilikal</span></h1>
             <p>Sheka Zone Special Boarding School Student at Mizan-Tepi University | Natural Science Stream | Self-Taught AI & ML Enthusiast | Robotics & Software Developer</p>
-            
-            <div class="counter-box glass-panel">
-                <i class="fas fa-eye" style="color: var(--accent-color);"></i> Views: <span id="visit-count">...</span>
-            </div>
 
             <!-- Social Media Buttons -->
             <div class="social-links" id="social">
@@ -822,33 +809,6 @@
                 photoElement.src = img1;
             }
             isFirstImage = !isFirstImage;
-        }
-
-        // True Unique Visitor Counter
-        const storageKey = 'bewuketu_visited_session';
-        const countKey = 'bewuketu_global_unique_views';
-        
-        let uniqueViews = parseInt(localStorage.getItem(countKey)) || 18;
-
-        if (!sessionStorage.getItem(storageKey)) {
-            uniqueViews += 1;
-            localStorage.setItem(countKey, uniqueViews);
-            sessionStorage.setItem(storageKey, 'true');
-
-            fetch('https://api.counterapi.dev/v1/bewuketuyilikal_portfolio_v2/views/up')
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.count) {
-                        document.getElementById('visit-count').innerText = data.count;
-                    } else {
-                        document.getElementById('visit-count').innerText = uniqueViews;
-                    }
-                })
-                .catch(() => {
-                    document.getElementById('visit-count').innerText = uniqueViews;
-                });
-        } else {
-            document.getElementById('visit-count').innerText = uniqueViews;
         }
     </script>
 </body>
