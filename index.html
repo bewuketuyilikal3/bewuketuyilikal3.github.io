@@ -113,8 +113,8 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -131,24 +131,24 @@
         }
 
         .nav-trigger i {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-color);
         }
 
-        /* Navigation Drawer */
+        /* Proportional Compact Navigation Drawer */
         .nav-drawer {
             position: fixed;
             top: 0;
-            right: -320px;
-            width: 290px;
+            right: -270px;
+            width: 240px; /* Reduced & Compact Width */
             height: 100vh;
             z-index: 999;
-            padding: 75px 22px 25px 22px;
-            transition: right 0.35s cubic-bezier(0.1, 0.9, 0.2, 1);
+            padding: 65px 16px 20px 16px;
+            transition: right 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-radius: 20px 0 0 20px;
+            border-radius: 16px 0 0 16px;
         }
 
         .nav-drawer.active {
@@ -162,19 +162,19 @@
         }
 
         .nav-links li {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .nav-links a {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            border-radius: 10px;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 8px;
             transition: 0.2s;
         }
 
@@ -186,7 +186,7 @@
 
         .theme-toggle-container {
             border-top: 1px solid var(--glass-border);
-            padding-top: 15px;
+            padding-top: 12px;
         }
 
         .theme-btn {
@@ -194,10 +194,10 @@
             border: 1px solid var(--glass-border);
             color: var(--text-color);
             width: 100%;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 9px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -216,7 +216,7 @@
             padding: 0 15px;
         }
 
-        /* Animated Tech Background Banner */
+        /* Swipeable / Scrollable Horizontal Banner Track */
         .banner-container {
             position: relative;
             width: 100%;
@@ -228,27 +228,70 @@
             background-color: var(--bg-color);
         }
 
+        .banner-slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+        }
+
+        .banner-slider-track::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome/Safari */
+        }
+
+        .slide-item {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: start;
+            position: relative;
+        }
+
         .slide-img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out, transform 4s linear;
-            transform: scale(1);
+            display: block;
+            pointer-events: none;
         }
 
-        .slide-img.active {
-            opacity: 1;
-            transform: scale(1.06);
+        /* Carousel Navigation Dots */
+        .dots-indicator {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 5;
+            background: rgba(12, 8, 5, 0.6);
+            padding: 4px 10px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
         }
 
-        /* Floating Square Photo (Floating on top-right of the Banner) */
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .dot.active {
+            background: var(--accent-color);
+            transform: scale(1.3);
+        }
+
+        /* Floating Square Profile Photo Over Banner (ON LEFT SIDE) */
         .profile-header-wrapper {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
             margin-top: -65px;
             margin-bottom: 20px;
             padding: 0 20px;
@@ -470,14 +513,14 @@
     <!-- Backdrop Overlay -->
     <div class="backdrop-overlay" id="backdrop" onclick="toggleMenu()"></div>
 
-    <!-- Navigation Drawer -->
+    <!-- Proportional Compact Navigation Drawer -->
     <nav class="nav-drawer glass-panel" id="navDrawer">
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#about" onclick="toggleMenu()"><i class="fas fa-user-graduate"></i> My Biography & Journey</a></li>
-            <li><a href="#projects" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects & Endeavors</a></li>
-            <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Skills & Technical Focus</a></li>
-            <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> Programs & STEM Experience</a></li>
+            <li><a href="#about" onclick="toggleMenu()"><i class="fas fa-user-graduate"></i> My Biography</a></li>
+            <li><a href="#projects" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects</a></li>
+            <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Technical Focus</a></li>
+            <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> STEM Experience</a></li>
             <li><a href="#contact" onclick="toggleMenu()"><i class="fas fa-paper-plane"></i> Contact Me</a></li>
         </ul>
 
@@ -488,18 +531,39 @@
         </div>
     </nav>
 
-    <!-- Animated Tech Background Banner -->
+    <!-- Touch Swipeable Horizontal Banner Carousel -->
     <div class="banner-container">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Bewuketu Yilikal - Microchip Design" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Machine Learning" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Artificial Intelligence" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Neural Networks" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Quantum Hardware" loading="lazy">
+        <div class="banner-slider-track" id="bannerTrack">
+            <div class="slide-item">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Microchip Design" loading="lazy">
+            </div>
+            <div class="slide-item">
+                <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Machine Learning" loading="lazy">
+            </div>
+            <div class="slide-item">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Artificial Intelligence" loading="lazy">
+            </div>
+            <div class="slide-item">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Cyber Security & Data" loading="lazy">
+            </div>
+            <div class="slide-item">
+                <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Quantum Hardware" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Dots Indicator -->
+        <div class="dots-indicator" id="dotsContainer">
+            <div class="dot active" onclick="scrollToSlide(0)"></div>
+            <div class="dot" onclick="scrollToSlide(1)"></div>
+            <div class="dot" onclick="scrollToSlide(2)"></div>
+            <div class="dot" onclick="scrollToSlide(3)"></div>
+            <div class="dot" onclick="scrollToSlide(4)"></div>
+        </div>
     </div>
 
     <div class="container" id="home">
         
-        <!-- Floating Square Profile Photo Over Banner -->
+        <!-- Floating Square Profile Photo Over Banner (ON LEFT SIDE) -->
         <div class="profile-header-wrapper">
             <div class="profile-square-wrapper" onclick="togglePhoto()">
                 <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal - Profile Photo" class="profile-img-large">
@@ -646,18 +710,47 @@
     </div>
 
     <script>
-        // Auto-Sliding Banner Carousel
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide-img');
-        
-        function autoSlideBanner() {
-            if(slides.length > 0) {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
+        // Smooth Horizontal Banner Swipe & Pagination Track Logic
+        const track = document.getElementById('bannerTrack');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlideIndex = 0;
+        const totalSlides = dots.length;
+
+        function scrollToSlide(index) {
+            currentSlideIndex = index;
+            const slideWidth = track.clientWidth;
+            track.scrollTo({
+                left: slideWidth * index,
+                behavior: 'smooth'
+            });
+            updateDots(index);
         }
-        setInterval(autoSlideBanner, 4000);
+
+        function updateDots(activeIndex) {
+            dots.forEach((dot, idx) => {
+                if (idx === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Detect user manual horizontal swipe
+        track.addEventListener('scroll', () => {
+            const slideWidth = track.clientWidth;
+            const newIndex = Math.round(track.scrollLeft / slideWidth);
+            if (newIndex !== currentSlideIndex && newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                updateDots(currentSlideIndex);
+            }
+        });
+
+        // Gentle Auto-Swipe every 5.5 seconds (Stops temporarily during interaction)
+        let autoSwipeInterval = setInterval(() => {
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            scrollToSlide(currentSlideIndex);
+        }, 5500);
 
         // Toggle Drawer Navigation Menu
         function toggleMenu() {
