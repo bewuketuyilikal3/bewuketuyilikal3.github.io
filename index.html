@@ -11,7 +11,7 @@
     <meta name="author" content="Bewuketu Yilikal">
     <meta name="robots" content="index, follow">
 
-    <!-- Social Media Preview Tags (Telegram, WhatsApp, LinkedIn, Twitter, Instagram) -->
+    <!-- Social Media Preview Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bewuketu Yilikal - AI Engineer & Robotics Developer">
     <meta property="og:description" content="Explore the portfolio, projects, and scientific journey of Bewuketu Yilikal - MTU STEM Center Member & Sheka Special Boarding School Student.">
@@ -211,20 +211,29 @@
         }
 
         .container {
-            max-width: 750px;
+            max-width: 800px;
             margin: 0 auto 50px auto;
             padding: 0 15px;
         }
 
-        /* Banner Carousel */
+        /* Top Header Split Layout (Left Animated Banner + Right Large Square Profile Photo) */
+        .top-header-split {
+            display: flex;
+            gap: 18px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            align-items: stretch;
+        }
+
+        /* Left Side Banner Container */
         .banner-container {
             position: relative;
-            width: 100%;
-            height: 220px;
-            border-radius: 0 0 24px 24px;
+            flex: 1.2;
+            height: 190px;
+            border-radius: 18px;
             overflow: hidden;
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             background-color: var(--bg-color);
         }
 
@@ -242,51 +251,51 @@
 
         .slide-img.active {
             opacity: 1;
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
-        /* Profile Header Wrapper */
-        .profile-header-wrapper {
-            display: flex;
-            align-items: flex-end;
-            gap: 20px;
-            margin-top: -55px;
-            margin-bottom: 20px;
-            padding: 0 10px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .profile-img-container {
+        /* Right Side Profile Photo Wrapper (Enlarged Square Profile Box) */
+        .profile-square-wrapper {
+            flex: 0.8;
+            max-width: 190px;
+            height: 190px;
             position: relative;
             cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--glass-border);
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease;
             background-color: var(--bg-color);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-            transition: transform 0.25s ease;
         }
 
-        .profile-img:hover {
-            transform: scale(1.05);
+        .profile-square-wrapper:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-color);
         }
 
-        .click-hint {
-            font-size: 0.65rem;
+        .profile-img-large {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .click-hint-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(12, 8, 5, 0.75);
             color: var(--muted-color);
+            font-size: 0.7rem;
             text-align: center;
-            margin-top: 4px;
+            padding: 4px 0;
+            backdrop-filter: blur(4px);
         }
 
         .hero-text {
-            padding: 0 10px;
+            padding: 0 5px;
             margin-bottom: 25px;
         }
 
@@ -449,6 +458,20 @@
         .backdrop-overlay.active {
             display: block;
         }
+
+        /* Mobile Responsiveness Adjustment */
+        @media (max-width: 600px) {
+            .top-header-split {
+                flex-direction: column;
+            }
+            .profile-square-wrapper {
+                max-width: 100%;
+                height: 220px;
+            }
+            .banner-container {
+                height: 160px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -479,21 +502,23 @@
         </div>
     </nav>
 
-    <!-- Banner Image Slider -->
-    <div class="banner-container">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Bewuketu Yilikal - Microchip Design" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Machine Learning" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Artificial Intelligence" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Neural Networks" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Quantum Hardware" loading="lazy">
-    </div>
-
     <div class="container" id="home">
-        <!-- Profile Header -->
-        <div class="profile-header-wrapper">
-            <div class="profile-img-container" onclick="togglePhoto()">
-                <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal - Official Photo" class="profile-img">
-                <div class="click-hint">👆 Click photo</div>
+        
+        <!-- Header Split: Left Banner Carousel & Right Large Profile Photo -->
+        <div class="top-header-split">
+            <!-- Left Side: Animated Tech Banner -->
+            <div class="banner-container">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Bewuketu Yilikal - Microchip Design" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Machine Learning" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Artificial Intelligence" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Neural Networks" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Quantum Hardware" loading="lazy">
+            </div>
+
+            <!-- Right Side: Enlarged Square Profile Box -->
+            <div class="profile-square-wrapper" onclick="togglePhoto()">
+                <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal - Profile Photo" class="profile-img-large">
+                <div class="click-hint-overlay">👆 Click photo</div>
             </div>
         </div>
 
@@ -506,19 +531,19 @@
                 <i class="fas fa-eye" style="color: var(--accent-color);"></i> Views: <span id="visit-count">...</span>
             </div>
 
-            <!-- Social Media Buttons (Uniform Username: @bewuketuyilikal) -->
+            <!-- Social Media Buttons (Uniform Username: @Bewuketuyilikal / Direct Chat) -->
             <div class="social-links" id="social">
                 <a href="https://t.me/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+                <a href="https://wa.me/251900000000?text=Hello%20Bewuketu" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-whatsapp"></i> WhatsApp (@Bewuketuyilikal)
                 </a>
                 <a href="https://x.com/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-x-twitter"></i> Twitter
                 </a>
                 <a href="https://instagram.com/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-instagram"></i> Instagram
-                </a>
-                <a href="https://wa.me/251900000000" target="_blank" class="social-btn glass-panel">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-github"></i> GitHub
@@ -620,13 +645,13 @@
                     <i class="fab fa-telegram-plane" style="color: var(--accent-color);"></i> <b>Telegram:</b> <a href="https://t.me/bewuketuyilikal" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal</a>
                 </li>
                 <li style="margin-bottom: 12px;">
+                    <i class="fab fa-whatsapp" style="color: var(--accent-color);"></i> <b>WhatsApp:</b> <a href="https://wa.me/251900000000?text=Hello%20Bewuketu" target="_blank" style="color: var(--accent-color); text-decoration: none;">@Bewuketuyilikal (Direct Chat)</a>
+                </li>
+                <li style="margin-bottom: 12px;">
                     <i class="fab fa-x-twitter" style="color: var(--accent-color);"></i> <b>Twitter/X:</b> <a href="https://x.com/bewuketuyilikal" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal</a>
                 </li>
                 <li style="margin-bottom: 12px;">
                     <i class="fab fa-instagram" style="color: var(--accent-color);"></i> <b>Instagram:</b> <a href="https://instagram.com/bewuketuyilikal" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal</a>
-                </li>
-                <li style="margin-bottom: 12px;">
-                    <i class="fab fa-whatsapp" style="color: var(--accent-color);"></i> <b>WhatsApp:</b> <a href="https://wa.me/251900000000" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal Chat</a>
                 </li>
                 <li style="margin-bottom: 12px;">
                     <i class="fas fa-envelope" style="color: var(--accent-color);"></i> <b>Email:</b> <a href="mailto:bewuketuyilikal3@gmail.com" style="color: var(--text-color); text-decoration: none;">bewuketuyilikal3@gmail.com</a>
