@@ -57,6 +57,9 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0805'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23d97724' stroke-width='6'/><path d='M35 50 L65 50 M50 35 L50 65' stroke='%23d97724' stroke-width='6' stroke-linecap='round'/></svg>">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Robot / Terminal Style Text -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #0c0805;
@@ -68,6 +71,7 @@
             --accent-color: #d97724;
             --accent-glow: #f58e38;
             --card-bg: rgba(22, 13, 7, 0.92);
+            --robot-green: #00ff66;
         }
 
         [data-theme="light"] {
@@ -80,6 +84,7 @@
             --accent-color: #c45e0e;
             --accent-glow: #e06c12;
             --card-bg: rgba(255, 255, 255, 0.94);
+            --robot-green: #008833;
         }
 
         * {
@@ -95,7 +100,7 @@
             transition: background 0.3s, color 0.3s;
             min-height: 100vh;
             overflow-x: hidden;
-            font-family: 'Fira Code', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace, sans-serif;
+            font-family: 'Fira Code', 'Share Tech Mono', monospace;
         }
 
         /* Glassmorphism Panel */
@@ -140,7 +145,7 @@
             position: fixed;
             top: 0;
             right: -270px;
-            width: 240px; /* Reduced & Compact Width */
+            width: 240px;
             height: 100vh;
             z-index: 999;
             padding: 65px 16px 20px 16px;
@@ -216,7 +221,7 @@
             padding: 0 15px;
         }
 
-        /* Swipeable / Scrollable Horizontal Banner Track */
+        /* Horizontal Banner Container */
         .banner-container {
             position: relative;
             width: 100%;
@@ -236,11 +241,11 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            scrollbar-width: none;
         }
 
         .banner-slider-track::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome/Safari */
+            display: none;
         }
 
         .slide-item {
@@ -259,33 +264,34 @@
             pointer-events: none;
         }
 
-        /* Carousel Navigation Dots */
+        /* Carousel Navigation Dots (Positioned Perfectly on the BOTTOM RIGHT) */
         .dots-indicator {
             position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 14px;
+            right: 18px; /* Shifted to Right side so photo doesn't cover it */
             display: flex;
-            gap: 6px;
+            gap: 8px;
             z-index: 5;
-            background: rgba(12, 8, 5, 0.6);
-            padding: 4px 10px;
-            border-radius: 12px;
-            backdrop-filter: blur(4px);
+            background: rgba(12, 8, 5, 0.75);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(6px);
         }
 
         .dot {
-            width: 7px;
-            height: 7px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.35);
             cursor: pointer;
             transition: background 0.3s, transform 0.3s;
         }
 
         .dot.active {
             background: var(--accent-color);
-            transform: scale(1.3);
+            transform: scale(1.35);
+            box-shadow: 0 0 8px var(--accent-glow);
         }
 
         /* Floating Square Profile Photo Over Banner (ON LEFT SIDE) */
@@ -410,6 +416,31 @@
             gap: 10px;
         }
 
+        /* Robot / Computer Sci-Fi Styled Terminal Typography for Biography */
+        .robot-terminal-text {
+            font-family: 'Share Tech Mono', 'Fira Code', monospace;
+            background: rgba(10, 15, 10, 0.65);
+            border-left: 3px solid var(--robot-green);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 10px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .robot-terminal-text p {
+            color: #d1e8d5;
+            line-height: 1.7;
+            font-size: 0.94rem;
+            letter-spacing: 0.3px;
+            margin-bottom: 14px;
+        }
+
+        .robot-prompt {
+            color: var(--robot-green);
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
         .focus-list {
             padding-left: 20px;
             color: var(--muted-color);
@@ -517,7 +548,7 @@
     <nav class="nav-drawer glass-panel" id="navDrawer">
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#about" onclick="toggleMenu()"><i class="fas fa-user-graduate"></i> My Biography</a></li>
+            <li><a href="#about" onclick="toggleMenu()"><i class="fas fa-terminal"></i> Biography.sys</a></li>
             <li><a href="#projects" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects</a></li>
             <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Technical Focus</a></li>
             <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> STEM Experience</a></li>
@@ -551,7 +582,7 @@
             </div>
         </div>
 
-        <!-- Dots Indicator -->
+        <!-- Dots Indicator (Moved to Right Side for Full Visibility) -->
         <div class="dots-indicator" id="dotsContainer">
             <div class="dot active" onclick="scrollToSlide(0)"></div>
             <div class="dot" onclick="scrollToSlide(1)"></div>
@@ -606,18 +637,21 @@
             </div>
         </div>
 
-        <!-- Biography & Academic Journey -->
+        <!-- Biography & Academic Journey (Robot / Terminal Sci-Fi Text Style) -->
         <div class="card glass-panel" id="about">
-            <h2><i class="fas fa-user-graduate"></i> Biography & Academic Journey</h2>
-            <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
-                My educational journey began in <b>Andracha Woreda, Sheka Zone</b>, where I completed my primary and lower secondary schooling from Grade 1 through Grade 9. Based on high academic merit, I was selected to attend the prestigious <b>Mizan-Tepi University Sheka Zone Special Boarding School</b>, completing Grade 10 and currently studying Grade 11 in the <b>Natural Science stream</b>.
-            </p>
-            <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
-                In <b>2018 E.C.</b>, I officially joined the <b>Mizan-Tepi University STEM Center</b>, developing technical skills in Electronics, Autonomous Robotics, and Computer Programming with <b>Python</b>. Through hands-on laboratory engineering, I built physical hardware solutions including <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Mobile Robots</i>.
-            </p>
-            <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
-                In <b>2026</b>, I attended the intensive <b>AddisCoder Summer Program</b> in Addis Ababa, training under international computer scientists in advanced algorithms and data structures. Alongside my studies in Physics, Mathematics, Chemistry, and ICT, I am training in <b>Large Language Models (LLMs), AI architectures, and Machine Learning</b> with the ambition of becoming a lead AI Engineer and Chip Architect.
-            </p>
+            <h2><i class="fas fa-terminal"></i> System Bio & Academic Log</h2>
+            
+            <div class="robot-terminal-text">
+                <p>
+                    <span class="robot-prompt">system@bewuketu:~$</span> My educational journey began in <b>Andracha Woreda, Sheka Zone</b>, where I completed my primary and lower secondary schooling from Grade 1 through Grade 9. Based on high academic merit, I was selected to attend the prestigious <b>Mizan-Tepi University Sheka Zone Special Boarding School</b>, completing Grade 10 and currently studying Grade 11 in the <b>Natural Science stream</b>.
+                </p>
+                <p>
+                    <span class="robot-prompt">system@bewuketu:~$</span> In <b>2018 E.C.</b>, I officially joined the <b>Mizan-Tepi University STEM Center</b>, developing technical skills in Electronics, Autonomous Robotics, and Computer Programming with <b>Python</b>. Through hands-on laboratory engineering, I built physical hardware solutions including <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Mobile Robots</i>.
+                </p>
+                <p>
+                    <span class="robot-prompt">system@bewuketu:~$</span> In <b>2026</b>, I attended the intensive <b>AddisCoder Summer Program</b> in Addis Ababa, training under international computer scientists in advanced algorithms and data structures. Alongside my studies in Physics, Mathematics, Chemistry, and ICT, I am training in <b>Large Language Models (LLMs), AI architectures, and Machine Learning</b> with the ambition of becoming a lead AI Engineer and Chip Architect.
+                </p>
+            </div>
         </div>
 
         <!-- Featured Projects Section -->
@@ -746,7 +780,7 @@
             }
         });
 
-        // Gentle Auto-Swipe every 5.5 seconds (Stops temporarily during interaction)
+        // Gentle Auto-Swipe every 5.5 seconds
         let autoSwipeInterval = setInterval(() => {
             currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
             scrollToSlide(currentSlideIndex);
