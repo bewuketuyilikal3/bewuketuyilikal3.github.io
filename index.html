@@ -3,18 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bewuketu Yilikal - Portfolio</title>
+    <title>Bewuketu Yilikal - Personal Portfolio & Knowledge Hub</title>
     
-    <!-- Open Graph / Meta Tags for Google Search & SEO -->
-    <meta name="description" content="Official Portfolio of Bewuketu Yilikal - Sheka Zone Special Boarding School Student at Mizan-Tepi University, AI/ML Learner, and Robotics Enthusiast.">
-    <meta name="keywords" content="Bewuketu Yilikal, Bewuketu, Yilikal, Sheka Special Boarding School, MTU STEM, AddisCoder, AI Engineer Ethiopia, Code-R Swart">
+    <!-- Open Graph / Meta Tags for Google Search & Ranking -->
+    <meta name="description" content="Official Portfolio of Bewuketu Yilikal - Natural Science Student at Sheka Zone Special Boarding School (Mizan-Tepi University), AI/ML Developer, Robotics Engineer, and AddisCoder Alumni.">
+    <meta name="keywords" content="Bewuketu Yilikal, Bewuketu, Yilikal, Sheka Special Boarding School, Mizan-Tepi University STEM, AddisCoder 2026, AI Engineer Ethiopia, Robotics Ethiopia, Code-R Swart">
     <meta name="author" content="Bewuketu Yilikal">
+    <meta name="robots" content="index, follow">
 
-    <!-- Social Media Preview Tags -->
-    <meta property="og:title" content="Bewuketu Yilikal - AI & Robotics Enthusiast">
-    <meta property="og:description" content="Portfolio of Bewuketu Yilikal - Natural Science Boarding Student, Python Developer, and Future AI Engineer.">
+    <!-- Social Media Preview Tags (Telegram, WhatsApp, LinkedIn, Twitter, Instagram) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Bewuketu Yilikal - AI Engineer & Robotics Developer">
+    <meta property="og:description" content="Explore the portfolio, projects, and scientific journey of Bewuketu Yilikal - MTU STEM Center Member & Sheka Special Boarding School Student.">
     <meta property="og:image" content="https://bewuketuyilikal3.github.io/IMG_20260915_114804_267%20(1).jpg">
     <meta property="og:url" content="https://bewuketuyilikal3.github.io">
+
+    <!-- Structured Data (JSON-LD) for Google Knowledge Panel Recognition -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bewuketu Yilikal",
+      "alternateName": ["በእውቀቱ ይሊቃል", "Bewuketu"],
+      "url": "https://bewuketuyilikal3.github.io",
+      "image": "https://bewuketuyilikal3.github.io/IMG_20260915_114804_267%20(1).jpg",
+      "jobTitle": "AI & Robotics Developer",
+      "worksFor": {
+        "@type": "EducationalOrganization",
+        "name": "Mizan-Tepi University STEM Center"
+      },
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Sheka Zone Special Boarding School"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "AddisCoder Summer Program"
+        }
+      ],
+      "sameAs": [
+        "https://t.me/bewuketuyilikal",
+        "https://x.com/bewuketuyilikal",
+        "https://instagram.com/bewuketuyilikal",
+        "https://github.com/bewuketuyilikal3",
+        "https://www.linkedin.com/in/bewuketu-yilikal-1243b7428"
+      ],
+      "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Python Programming", "Robotics", "Chip Design", "Data Structures and Algorithms"]
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0805'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23d97724' stroke-width='6'/><path d='M35 50 L65 50 M50 35 L50 65' stroke='%23d97724' stroke-width='6' stroke-linecap='round'/></svg>">
@@ -22,25 +59,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0d0805;
-            --glass-bg: rgba(30, 18, 10, 0.75);
-            --glass-border: rgba(210, 150, 100, 0.18);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
-            --text-color: #ffffff;
-            --muted-color: #d1bfae;
+            --bg-color: #0c0805;
+            --glass-bg: rgba(28, 16, 9, 0.78);
+            --glass-border: rgba(217, 119, 36, 0.22);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
+            --text-color: #f5ece5;
+            --muted-color: #cbbaa8;
             --accent-color: #d97724;
-            --card-bg: rgba(25, 15, 8, 0.88);
+            --accent-glow: #f58e38;
+            --card-bg: rgba(22, 13, 7, 0.92);
         }
 
         [data-theme="light"] {
-            --bg-color: #f7f3f0;
+            --bg-color: #f8f4f0;
             --glass-bg: rgba(255, 255, 255, 0.88);
             --glass-border: rgba(180, 120, 70, 0.25);
             --glass-shadow: 0 8px 32px 0 rgba(120, 80, 40, 0.12);
             --text-color: #2b1a0e;
             --muted-color: #6b5545;
             --accent-color: #c45e0e;
-            --card-bg: rgba(255, 255, 255, 0.92);
+            --accent-glow: #e06c12;
+            --card-bg: rgba(255, 255, 255, 0.94);
         }
 
         * {
@@ -56,20 +95,20 @@
             transition: background 0.3s, color 0.3s;
             min-height: 100vh;
             overflow-x: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Fira Code', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace, sans-serif;
         }
 
         /* Glassmorphism Panel */
         .glass-panel {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
             box-shadow: var(--glass-shadow);
             border-radius: 16px;
         }
 
-        /* Menu Trigger Button */
+        /* Navigation Menu Trigger Button */
         .nav-trigger {
             position: fixed;
             top: 20px;
@@ -82,12 +121,13 @@
             align-items: center;
             cursor: pointer;
             z-index: 1000;
-            transition: transform 0.2s, background 0.2s;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
         .nav-trigger:hover {
             transform: scale(1.08);
             border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(217, 119, 36, 0.4);
         }
 
         .nav-trigger i {
@@ -184,7 +224,7 @@
             border-radius: 0 0 24px 24px;
             overflow: hidden;
             border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             background-color: var(--bg-color);
         }
 
@@ -230,7 +270,7 @@
             object-fit: cover;
             border: 4px solid var(--glass-border);
             background-color: var(--bg-color);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
             transition: transform 0.25s ease;
         }
 
@@ -258,6 +298,7 @@
         .bio-name {
             color: var(--accent-color);
             font-style: italic;
+            text-shadow: 0 0 10px rgba(217, 119, 36, 0.3);
         }
 
         .hero-text p {
@@ -298,6 +339,7 @@
             background: var(--accent-color);
             color: #ffffff;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(217, 119, 36, 0.4);
         }
 
         .card {
@@ -419,7 +461,7 @@
     <!-- Backdrop Overlay -->
     <div class="backdrop-overlay" id="backdrop" onclick="toggleMenu()"></div>
 
-    <!-- Navigation Drawer (Expanded Links) -->
+    <!-- Navigation Drawer -->
     <nav class="nav-drawer glass-panel" id="navDrawer">
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
@@ -439,18 +481,18 @@
 
     <!-- Banner Image Slider -->
     <div class="banner-container">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Microchip Design" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Machine Learning" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Artificial Intelligence" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Neural Networks" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Quantum Hardware" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="slide-img active" alt="Bewuketu Yilikal - Microchip Design" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Machine Learning" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Artificial Intelligence" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Neural Networks" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1200&auto=format&fit=crop" class="slide-img" alt="Bewuketu Yilikal - Quantum Hardware" loading="lazy">
     </div>
 
     <div class="container" id="home">
         <!-- Profile Header -->
         <div class="profile-header-wrapper">
             <div class="profile-img-container" onclick="togglePhoto()">
-                <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal" class="profile-img">
+                <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal - Official Photo" class="profile-img">
                 <div class="click-hint">👆 Click photo</div>
             </div>
         </div>
@@ -458,16 +500,25 @@
         <!-- Hero Text Section -->
         <div class="hero-text">
             <h1>Hi, I'm <span class="bio-name">Bewuketu Yilikal</span></h1>
-            <p>Sheka Zone Special Boarding School Student at Mizan-Tepi University | Natural Science Stream | Self-Taught AI & ML Enthusiast | Robotics Developer</p>
+            <p>Sheka Zone Special Boarding School Student at Mizan-Tepi University | Natural Science Stream | Self-Taught AI & ML Enthusiast | Robotics & Software Developer</p>
             
             <div class="counter-box glass-panel">
                 <i class="fas fa-eye" style="color: var(--accent-color);"></i> Views: <span id="visit-count">...</span>
             </div>
 
-            <!-- Social Media Buttons -->
+            <!-- Social Media Buttons (Uniform Username: @bewuketuyilikal) -->
             <div class="social-links" id="social">
                 <a href="https://t.me/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+                <a href="https://x.com/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://instagram.com/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://wa.me/251900000000" target="_blank" class="social-btn glass-panel">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://github.com/bewuketuyilikal3" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-github"></i> GitHub
@@ -478,23 +529,20 @@
                 <a href="mailto:bewuketuyilikal3@gmail.com" class="social-btn glass-panel">
                     <i class="fas fa-envelope"></i> Email
                 </a>
-                <a href="https://wa.me/251900000000" target="_blank" class="social-btn glass-panel">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
             </div>
         </div>
 
-        <!-- Comprehensive Biography & Life Journey Section -->
+        <!-- Biography & Academic Journey -->
         <div class="card glass-panel" id="about">
             <h2><i class="fas fa-user-graduate"></i> Biography & Academic Journey</h2>
             <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
-                My journey began in <b>Andracha Woreda, Sheka Zone</b>, where I completed my elementary and primary education from Grade 1 through Grade 9. Demonstrating strong academic excellence, I was selected to join the prestigious <b>Mizan-Tepi University Sheka Zone Special Boarding School</b>, where I completed Grade 10 and am currently an 11th Grade student in the <b>Natural Science stream</b>.
+                My educational journey began in <b>Andracha Woreda, Sheka Zone</b>, where I completed my primary and lower secondary schooling from Grade 1 through Grade 9. Based on high academic merit, I was selected to attend the prestigious <b>Mizan-Tepi University Sheka Zone Special Boarding School</b>, completing Grade 10 and currently studying Grade 11 in the <b>Natural Science stream</b>.
             </p>
             <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
-                In <b>2018 E.C.</b>, I officially joined the <b>Mizan-Tepi University STEM Center</b>, immersing myself in Electronics, Robotics, and Computer Programming—specifically mastering <b>Python</b>. Over time, I hands-on built hardware innovations including <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Autonomous Robots</i>.
+                In <b>2018 E.C.</b>, I officially joined the <b>Mizan-Tepi University STEM Center</b>, developing technical skills in Electronics, Autonomous Robotics, and Computer Programming with <b>Python</b>. Through hands-on laboratory engineering, I built physical hardware solutions including <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Mobile Robots</i>.
             </p>
             <p style="color: var(--muted-color); line-height: 1.7; font-size: 0.95rem;">
-                In <b>2026</b>, I participated in the prestigious <b>AddisCoder Summer Program</b> in Addis Ababa, sharpening my knowledge in advanced data structures, algorithms, and computational thinking. Alongside my deep commitment to Mathematics, Physics, Chemistry, and Information & Communication Technology (ICT), I am actively training myself in <b>Large Language Models (LLMs), AI architectures, and Machine Learning</b> with the ultimate ambition of becoming a lead AI Engineer and Chip Designer.
+                In <b>2026</b>, I attended the intensive <b>AddisCoder Summer Program</b> in Addis Ababa, training under international computer scientists in advanced algorithms and data structures. Alongside my studies in Physics, Mathematics, Chemistry, and ICT, I am training in <b>Large Language Models (LLMs), AI architectures, and Machine Learning</b> with the ambition of becoming a lead AI Engineer and Chip Architect.
             </p>
         </div>
 
@@ -508,11 +556,11 @@
                     <i class="fas fa-terminal" style="color: var(--accent-color);"></i> Code-R Swart
                 </div>
                 <p class="project-desc">
-                    A full-stack web application designed for developers and app builders. Features a VS Code-like IDE interface on the frontend paired with a robust custom backend API.
+                    A full-stack web application designed for app builders and developers. Features a custom VS Code-like interface on the frontend paired with a robust custom backend API architecture.
                 </p>
                 <div class="skill-tags">
                     <span class="tag">VS Code UI</span>
-                    <span class="tag">Backend API</span>
+                    <span class="tag">Custom Backend API</span>
                     <span class="tag">Web IDE</span>
                 </div>
                 <a href="https://code-r-swart.vercel.app" target="_blank" class="project-btn">
@@ -526,12 +574,12 @@
                     <i class="fas fa-school" style="color: var(--accent-color);"></i> Sheka Boarding School Official Portal
                 </div>
                 <p class="project-desc">
-                    Currently building and deploying a comprehensive web portal for <b>Mizan-Tepi University Sheka Zone Special Boarding School</b> to digitalize student services and school communication.
+                    Currently developing a full-stack web portal for <b>Mizan-Tepi University Sheka Zone Special Boarding School</b> to digitalize school communications, announcements, and student resources.
                 </p>
                 <div class="skill-tags">
-                    <span class="tag">In Development</span>
-                    <span class="tag">Full-Stack</span>
-                    <span class="tag">School Utility</span>
+                    <span class="tag">In Active Development</span>
+                    <span class="tag">Full-Stack Web</span>
+                    <span class="tag">School Management System</span>
                 </div>
             </div>
         </div>
@@ -555,30 +603,33 @@
         <div class="card glass-panel" id="participated">
             <h2><i class="fas fa-hands-helping"></i> Programs & STEM Experience</h2>
             <ul class="focus-list">
-                <li><b>AddisCoder 2026 Summer Program:</b> Completed intensive algorithm analysis and Python training led by international computer science instructors.</li>
-                <li><b>MTU STEM Center (Since 2018 E.C.):</b> Developed practical engineering skills in circuit design, microcontroller programming, and robotics hardware.</li>
-                <li><b>Robotics Engineering:</b> Engineered functional <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Autonomous Mobile Platforms</i>.</li>
+                <li><b>AddisCoder 2026 Summer Program:</b> Completed rigorous algorithms and Python programming coursework led by top international computer science instructors.</li>
+                <li><b>MTU STEM Center (Since 2018 E.C.):</b> Built hardware-software integrations in circuit design, microcontrollers, and embedded logic.</li>
+                <li><b>Robotics Projects:</b> Engineered physical <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Autonomous Rovers</i>.</li>
             </ul>
         </div>
 
-        <!-- Dedicated Contact Me Section -->
+        <!-- Contact Section -->
         <div class="card glass-panel" id="contact">
-            <h2><i class="fas fa-paper-plane"></i> Contact Me</h2>
+            <h2><i class="fas fa-paper-plane"></i> Direct Contact Info</h2>
             <p style="color: var(--muted-color); font-size: 0.92rem; line-height: 1.6;">
-                Feel free to connect with me for technical discussions, AI/ML collaboration, or academic inquiries:
+                Reach out for technical discussions, AI/ML collaborations, or academic networking:
             </p>
             <ul class="focus-list" style="list-style: none; padding-left: 0;">
-                <li style="margin-bottom: 10px;">
+                <li style="margin-bottom: 12px;">
                     <i class="fab fa-telegram-plane" style="color: var(--accent-color);"></i> <b>Telegram:</b> <a href="https://t.me/bewuketuyilikal" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal</a>
                 </li>
-                <li style="margin-bottom: 10px;">
+                <li style="margin-bottom: 12px;">
+                    <i class="fab fa-x-twitter" style="color: var(--accent-color);"></i> <b>Twitter/X:</b> <a href="https://x.com/bewuketuyilikal" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal</a>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <i class="fab fa-instagram" style="color: var(--accent-color);"></i> <b>Instagram:</b> <a href="https://instagram.com/bewuketuyilikal" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal</a>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <i class="fab fa-whatsapp" style="color: var(--accent-color);"></i> <b>WhatsApp:</b> <a href="https://wa.me/251900000000" target="_blank" style="color: var(--accent-color); text-decoration: none;">@bewuketuyilikal Chat</a>
+                </li>
+                <li style="margin-bottom: 12px;">
                     <i class="fas fa-envelope" style="color: var(--accent-color);"></i> <b>Email:</b> <a href="mailto:bewuketuyilikal3@gmail.com" style="color: var(--text-color); text-decoration: none;">bewuketuyilikal3@gmail.com</a>
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <i class="fab fa-linkedin" style="color: var(--accent-color);"></i> <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/bewuketu-yilikal-1243b7428" target="_blank" style="color: var(--text-color); text-decoration: none;">bewuketu-yilikal-1243b7428</a>
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <i class="fab fa-whatsapp" style="color: var(--accent-color);"></i> <b>WhatsApp:</b> <a href="https://wa.me/251900000000" target="_blank" style="color: var(--text-color); text-decoration: none;">Direct Chat</a>
                 </li>
             </ul>
         </div>
