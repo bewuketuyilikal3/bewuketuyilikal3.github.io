@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bewuketu Yilikal - Personal Portfolio & Knowledge Hub</title>
     
+    <!-- Open Graph / Meta Tags for Google Search & Ranking -->
     <meta name="description" content="Official Portfolio and Photo Gallery of Bewuketu Yilikal - Natural Science Student at Sheka Zone Special Boarding School (Mizan-Tepi University), AI/ML Developer, Robotics Engineer, and AddisCoder Alumni.">
     <meta name="keywords" content="Bewuketu Yilikal, Bewuketu, Yilikal, Sheka Special Boarding School, Mizan-Tepi University STEM, AddisCoder 2026, AI Engineer Ethiopia, Robotics Ethiopia, Code-R Swart">
     <meta name="author" content="Bewuketu Yilikal">
     <meta name="robots" content="index, follow">
 
+    <!-- Social Media Preview Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bewuketu Yilikal - AI Engineer & Robotics Developer & Gallery">
     <meta property="og:description" content="Explore the portfolio, photo gallery, projects, and scientific journey of Bewuketu Yilikal.">
     <meta property="og:image" content="https://bewuketuyilikal3.github.io/IMG_20260915_114804_267%20(1).jpg">
     <meta property="og:url" content="https://bewuketuyilikal3.github.io">
 
+    <!-- Structured Data (JSON-LD) for Google Knowledge Panel & Instant Image Recognition -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -60,9 +63,11 @@
     }
     </script>
 
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0805'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23d97724' stroke-width='6'/><path d='M35 50 L65 50 M50 35 L50 65' stroke='%23d97724' stroke-width='6' stroke-linecap='round'/></svg>">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Robot / Terminal Style Text -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
     <style>
@@ -108,6 +113,7 @@
             font-family: 'Fira Code', 'Share Tech Mono', monospace;
         }
 
+        /* Glassmorphism Panel */
         .glass-panel {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -117,6 +123,7 @@
             border-radius: 16px;
         }
 
+        /* Navigation Menu Trigger Button (Three Dots) */
         .nav-trigger {
             position: fixed;
             top: 20px;
@@ -143,6 +150,7 @@
             color: var(--text-color);
         }
 
+        /* Proportional Compact Navigation Drawer */
         .nav-drawer {
             position: fixed;
             top: 0;
@@ -223,6 +231,7 @@
             padding: 0 15px;
         }
 
+        /* Horizontal Banner Container */
         .banner-container {
             position: relative;
             width: 100%;
@@ -265,6 +274,7 @@
             pointer-events: none;
         }
 
+        /* Carousel Navigation Dots (Bottom Right) */
         .dots-indicator {
             position: absolute;
             bottom: 14px;
@@ -294,6 +304,7 @@
             box-shadow: 0 0 8px var(--accent-glow);
         }
 
+        /* Floating Square Profile Photo Over Banner (ON LEFT SIDE) */
         .profile-header-wrapper {
             display: flex;
             justify-content: flex-start;
@@ -406,6 +417,7 @@
             gap: 10px;
         }
 
+        /* Secret Admin Uploader Box (Hidden by default for non-admins) */
         .admin-uploader-box {
             display: none;
             background: rgba(15, 10, 5, 0.7);
@@ -465,6 +477,7 @@
             display: block;
         }
 
+        /* Robot / Computer Sci-Fi Styled Terminal Typography */
         .robot-terminal-text {
             font-family: 'Share Tech Mono', 'Fira Code', monospace;
             background: rgba(10, 15, 10, 0.65);
@@ -516,6 +529,7 @@
             border: 1px solid var(--glass-border);
         }
 
+        /* Project Card */
         .project-card {
             display: flex;
             flex-direction: column;
@@ -583,12 +597,15 @@
 </head>
 <body>
 
+    <!-- Floating Navigation Menu Button (Three Dots Icon) -->
     <div class="nav-trigger glass-panel" onclick="toggleMenu()">
         <i class="fas fa-ellipsis-v" id="menuIcon"></i>
     </div>
 
+    <!-- Backdrop Overlay -->
     <div class="backdrop-overlay" id="backdrop" onclick="toggleMenu()"></div>
 
+    <!-- Proportional Compact Navigation Drawer -->
     <nav class="nav-drawer glass-panel" id="navDrawer">
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
@@ -607,6 +624,7 @@
         </div>
     </nav>
 
+    <!-- Touch Swipeable Horizontal Banner Carousel -->
     <div class="banner-container">
         <div class="banner-slider-track" id="bannerTrack">
             <div class="slide-item">
@@ -626,6 +644,7 @@
             </div>
         </div>
 
+        <!-- Dots Indicator -->
         <div class="dots-indicator" id="dotsContainer">
             <div class="dot active" onclick="scrollToSlide(0)"></div>
             <div class="dot" onclick="scrollToSlide(1)"></div>
@@ -637,6 +656,7 @@
 
     <div class="container" id="home">
         
+        <!-- Floating Square Profile Photo Over Banner (ON LEFT SIDE) -->
         <div class="profile-header-wrapper">
             <div class="profile-square-wrapper" onclick="togglePhoto()">
                 <img id="myPhoto" src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal - Profile Photo" class="profile-img-large">
@@ -644,10 +664,12 @@
             </div>
         </div>
 
+        <!-- Hero Text Section -->
         <div class="hero-text">
             <h1>Hi, I'm <span class="bio-name">Bewuketu Yilikal</span></h1>
             <p>Sheka Zone Special Boarding School Student at Mizan-Tepi University | Natural Science Stream | Self-Taught AI & ML Enthusiast | Robotics & Software Developer</p>
 
+            <!-- Social Media Buttons -->
             <div class="social-links" id="social">
                 <a href="https://t.me/bewuketuyilikal" target="_blank" class="social-btn glass-panel">
                     <i class="fab fa-telegram-plane"></i> Telegram
@@ -673,6 +695,7 @@
             </div>
         </div>
 
+        <!-- Biography & Academic Journey (Robot / Terminal Sci-Fi Text Style) -->
         <div class="card glass-panel" id="about">
             <h2><i class="fas fa-terminal"></i> System Bio & Academic Log</h2>
             
@@ -689,9 +712,11 @@
             </div>
         </div>
 
+        <!-- Featured Projects Section -->
         <div class="card glass-panel" id="projects">
             <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
             
+            <!-- Project 1: Code-R Swart -->
             <div class="project-card">
                 <div class="project-title">
                     <i class="fas fa-terminal" style="color: var(--accent-color);"></i> Code-R Swart
@@ -709,6 +734,7 @@
                 </a>
             </div>
 
+            <!-- Project 2: Sheka Boarding Website -->
             <div class="project-card" style="margin-top: 15px;">
                 <div class="project-title">
                     <i class="fas fa-school" style="color: var(--accent-color);"></i> Sheka Boarding School Official Portal
@@ -724,6 +750,7 @@
             </div>
         </div>
 
+        <!-- Skills for the Future Section -->
         <div class="card glass-panel" id="skills">
             <h2><i class="fas fa-laptop-code"></i> Skills for the Future</h2>
             <div class="skill-tags">
@@ -738,6 +765,7 @@
             </div>
         </div>
 
+        <!-- Programs & Experience Section -->
         <div class="card glass-panel" id="participated">
             <h2><i class="fas fa-hands-helping"></i> Programs & STEM Experience</h2>
             <ul class="focus-list">
@@ -747,13 +775,14 @@
             </ul>
         </div>
 
-        <!-- Photo Gallery Section (Sariyada file names hondi 100% matthu seriyagi kelasa maduttade) -->
+        <!-- Photo Gallery Section (With all 9 images matching GitHub files) -->
         <div class="card glass-panel" id="gallery">
             <h2><i class="fas fa-images"></i> Photo Gallery Library</h2>
             <p style="color: var(--muted-color); font-size: 0.9rem; margin-bottom: 15px;">
                 Official photo collection, academic activities, STEM engineering projects, and personal highlights.
             </p>
             
+            <!-- Secret Admin Mode Uploader Box (Only appears when accessed via #admin + password 17870140GMgmGM^?) -->
             <div class="admin-uploader-box" id="adminUploaderBox">
                 <p style="color: var(--robot-green); font-size: 0.85rem; margin-top: 0;">🔑 Secret Admin Mode Activated!</p>
                 <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
@@ -762,7 +791,7 @@
                 </button>
             </div>
 
-            <!-- Previouse `.heic` file galige `20260815_111511.jpeg` matthu `20260821_143241.jpeg` update maadide -->
+            <!-- Gallery Grid with 100% working JPEG/JPG images matching GitHub exact filenames -->
             <div class="gallery-grid" id="galleryGrid">
                 <div class="gallery-item"><img src="20260815_111511.jpeg" alt="Bewuketu Yilikal Photo 1"></div>
                 <div class="gallery-item"><img src="20260821_143241.jpeg" alt="Bewuketu Yilikal Photo 2"></div>
@@ -776,6 +805,7 @@
             </div>
         </div>
 
+        <!-- Contact Section -->
         <div class="card glass-panel" id="contact">
             <h2><i class="fas fa-paper-plane"></i> Direct Contact Info</h2>
             <p style="color: var(--muted-color); font-size: 0.92rem; line-height: 1.6;">
@@ -802,6 +832,7 @@
     </div>
 
     <script>
+        // Smooth Horizontal Banner Swipe & Pagination Track Logic
         const track = document.getElementById('bannerTrack');
         const dots = document.querySelectorAll('.dot');
         let currentSlideIndex = 0;
@@ -827,6 +858,7 @@
             });
         }
 
+        // Detect user manual horizontal swipe
         track.addEventListener('scroll', () => {
             const slideWidth = track.clientWidth;
             const newIndex = Math.round(track.scrollLeft / slideWidth);
@@ -836,11 +868,13 @@
             }
         });
 
+        // Gentle Auto-Swipe every 5.5 seconds
         let autoSwipeInterval = setInterval(() => {
             currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
             scrollToSlide(currentSlideIndex);
         }, 5500);
 
+        // Toggle Drawer Navigation Menu
         function toggleMenu() {
             const navDrawer = document.getElementById('navDrawer');
             const backdrop = document.getElementById('backdrop');
@@ -856,12 +890,14 @@
             }
         }
 
+        // Toggle Dark/Light Theme
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', targetTheme);
         }
 
+        // Toggle Profile Photo
         const img1 = "IMG_20260915_114804_267 (1).jpg";
         const img2 = "IMG_20260915_114804_064.jpg";
         let isFirstImage = true;
@@ -876,6 +912,7 @@
             isFirstImage = !isFirstImage;
         }
 
+        // Secret Admin Mode Logic (#admin trigger with password 17870140GMgmGM^?)
         function checkAdminMode() {
             if (window.location.hash === '#admin') {
                 const password = prompt("🔑 Secret Admin Access: Enter Admin Password:");
@@ -890,6 +927,7 @@
         window.addEventListener('hashchange', checkAdminMode);
         window.addEventListener('load', checkAdminMode);
 
+        // Internal Storage Photo Uploader Handler for Admin
         function handleImageUpload(event) {
             const file = event.target.files[0];
             if (file) {
