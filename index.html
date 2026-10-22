@@ -6,19 +6,19 @@
     <title>Bewuketu Yilikal - Personal Portfolio & Knowledge Hub</title>
     
     <!-- Open Graph / Meta Tags for Google Search & Ranking -->
-    <meta name="description" content="Official Portfolio of Bewuketu Yilikal - Natural Science Student at Sheka Zone Special Boarding School (Mizan-Tepi University), AI/ML Developer, Robotics Engineer, and AddisCoder Alumni.">
+    <meta name="description" content="Official Portfolio and Photo Gallery of Bewuketu Yilikal - Natural Science Student at Sheka Zone Special Boarding School (Mizan-Tepi University), AI/ML Developer, Robotics Engineer, and AddisCoder Alumni.">
     <meta name="keywords" content="Bewuketu Yilikal, Bewuketu, Yilikal, Sheka Special Boarding School, Mizan-Tepi University STEM, AddisCoder 2026, AI Engineer Ethiopia, Robotics Ethiopia, Code-R Swart">
     <meta name="author" content="Bewuketu Yilikal">
     <meta name="robots" content="index, follow">
 
     <!-- Social Media Preview Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Bewuketu Yilikal - AI Engineer & Robotics Developer">
-    <meta property="og:description" content="Explore the portfolio, projects, and scientific journey of Bewuketu Yilikal - MTU STEM Center Member & Sheka Special Boarding School Student.">
+    <meta property="og:title" content="Bewuketu Yilikal - AI Engineer & Robotics Developer & Gallery">
+    <meta property="og:description" content="Explore the portfolio, photo gallery, projects, and scientific journey of Bewuketu Yilikal.">
     <meta property="og:image" content="https://bewuketuyilikal3.github.io/IMG_20260915_114804_267%20(1).jpg">
     <meta property="og:url" content="https://bewuketuyilikal3.github.io">
 
-    <!-- Structured Data (JSON-LD) for Google Knowledge Panel Recognition -->
+    <!-- Structured Data (JSON-LD) for Google Knowledge Panel & Instant Image Recognition -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,7 +26,10 @@
       "name": "Bewuketu Yilikal",
       "alternateName": ["በእውቀቱ ይሊቃል", "Bewuketu"],
       "url": "https://bewuketuyilikal3.github.io",
-      "image": "https://bewuketuyilikal3.github.io/IMG_20260915_114804_267%20(1).jpg",
+      "image": [
+        "https://bewuketuyilikal3.github.io/IMG_20260915_114804_267%20(1).jpg",
+        "https://bewuketuyilikal3.github.io/IMG_20260915_114804_064.jpg"
+      ],
       "jobTitle": "AI & Robotics Developer",
       "worksFor": {
         "@type": "EducationalOrganization",
@@ -113,7 +116,7 @@
             border-radius: 16px;
         }
 
-        /* Navigation Menu Trigger Button */
+        /* Navigation Menu Trigger Button (Changed to 3 Dots) */
         .nav-trigger {
             position: fixed;
             top: 20px;
@@ -136,7 +139,7 @@
         }
 
         .nav-trigger i {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text-color);
         }
 
@@ -407,6 +410,59 @@
             gap: 10px;
         }
 
+        /* Photo Gallery & Uploader Styles */
+        .uploader-box {
+            background: rgba(15, 10, 5, 0.5);
+            border: 1px dashed var(--accent-color);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .upload-btn {
+            background: var(--accent-color);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .upload-btn:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .gallery-item {
+            height: 110px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-color);
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         /* Robot / Computer Sci-Fi Styled Terminal Typography */
         .robot-terminal-text {
             font-family: 'Share Tech Mono', 'Fira Code', monospace;
@@ -527,9 +583,9 @@
 </head>
 <body>
 
-    <!-- Floating Navigation Menu Button -->
+    <!-- Floating Navigation Menu Button (Three Dots Icon) -->
     <div class="nav-trigger glass-panel" onclick="toggleMenu()">
-        <i class="fas fa-bars" id="menuIcon"></i>
+        <i class="fas fa-ellipsis-v" id="menuIcon"></i>
     </div>
 
     <!-- Backdrop Overlay -->
@@ -540,6 +596,7 @@
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="#about" onclick="toggleMenu()"><i class="fas fa-terminal"></i> Biography.sys</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()"><i class="fas fa-images"></i> Photo Gallery</a></li>
             <li><a href="#projects" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects</a></li>
             <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Technical Focus</a></li>
             <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> STEM Experience</a></li>
@@ -638,6 +695,27 @@
                 <p>
                     <span class="robot-prompt">system@bewuketu:~$</span> In <b>2026</b>, I attended the intensive <b>AddisCoder Summer Program</b> in Addis Ababa, training under international computer scientists in advanced algorithms and data structures. Alongside my studies in Physics, Mathematics, Chemistry, and ICT, I am training in <b>Large Language Models (LLMs), AI architectures, and Machine Learning</b> with the ambition of becoming a lead AI Engineer and Chip Architect.
                 </p>
+            </div>
+        </div>
+
+        <!-- Photo Gallery & Internal Storage Uploader Feature -->
+        <div class="card glass-panel" id="gallery">
+            <h2><i class="fas fa-images"></i> Photo Gallery & Uploader</h2>
+            <p style="color: var(--muted-color); font-size: 0.9rem; margin-bottom: 15px;">
+                Upload your personal photos, friends' pictures, or project images directly from your internal storage into this gallery library.
+            </p>
+            
+            <div class="uploader-box">
+                <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+                <button class="upload-btn" onclick="document.getElementById('imageInput').click()">
+                    <i class="fas fa-cloud-upload-alt"></i> Choose Photo from Storage
+                </button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Default gallery items -->
+                <div class="gallery-item"><img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal Photo 1"></div>
+                <div class="gallery-item"><img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Photo 2"></div>
             </div>
         </div>
 
@@ -785,7 +863,7 @@
             if(navDrawer.classList.contains('active')) {
                 menuIcon.className = 'fas fa-times';
             } else {
-                menuIcon.className = 'fas fa-bars';
+                menuIcon.className = 'fas fa-ellipsis-v';
             }
         }
 
@@ -809,6 +887,22 @@
                 photoElement.src = img1;
             }
             isFirstImage = !isFirstImage;
+        }
+
+        // Internal Storage Photo Uploader Handler
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const galleryGrid = document.getElementById('galleryGrid');
+                    const newItem = document.createElement('div');
+                    newItem.className = 'gallery-item';
+                    newItem.innerHTML = `<img src="${e.target.result}" alt="Uploaded Photo">`;
+                    galleryGrid.appendChild(newItem);
+                }
+                reader.readAsDataURL(file);
+            }
         }
     </script>
 </body>
