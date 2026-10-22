@@ -28,7 +28,12 @@
       "url": "https://bewuketuyilikal3.github.io",
       "image": [
         "https://bewuketuyilikal3.github.io/IMG_20260915_114804_267%20(1).jpg",
-        "https://bewuketuyilikal3.github.io/IMG_20260915_114804_064.jpg"
+        "https://bewuketuyilikal3.github.io/IMG_20260915_114804_064.jpg",
+        "https://bewuketuyilikal3.github.io/IMG_20261013_132620.jpg",
+        "https://bewuketuyilikal3.github.io/IMG_20260803_194544_250.jpeg",
+        "https://bewuketuyilikal3.github.io/IMG_20260803_195432_569.jpeg",
+        "https://bewuketuyilikal3.github.io/IMG_20260915_114803_854.jpg",
+        "https://bewuketuyilikal3.github.io/IMG_20260915_114804_348.jpg"
       ],
       "jobTitle": "AI & Robotics Developer",
       "worksFor": {
@@ -116,7 +121,7 @@
             border-radius: 16px;
         }
 
-        /* Navigation Menu Trigger Button (Changed to 3 Dots) */
+        /* Navigation Menu Trigger Button (Three Dots) */
         .nav-trigger {
             position: fixed;
             top: 20px;
@@ -410,10 +415,11 @@
             gap: 10px;
         }
 
-        /* Photo Gallery & Uploader Styles */
-        .uploader-box {
-            background: rgba(15, 10, 5, 0.5);
-            border: 1px dashed var(--accent-color);
+        /* Secret Admin Uploader Box (Hidden by default for non-admins) */
+        .admin-uploader-box {
+            display: none;
+            background: rgba(15, 10, 5, 0.7);
+            border: 2px dashed var(--accent-color);
             padding: 16px;
             border-radius: 12px;
             text-align: center;
@@ -423,7 +429,7 @@
         .upload-btn {
             background: var(--accent-color);
             color: #fff;
-            padding: 8px 16px;
+            padding: 9px 18px;
             border-radius: 8px;
             border: none;
             cursor: pointer;
@@ -442,18 +448,24 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
             margin-top: 12px;
         }
 
         .gallery-item {
-            height: 110px;
-            border-radius: 10px;
+            height: 130px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--glass-border);
             background: var(--bg-color);
             position: relative;
+            transition: transform 0.2s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.04);
+            border-color: var(--accent-color);
         }
 
         .gallery-item img {
@@ -596,10 +608,10 @@
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="#about" onclick="toggleMenu()"><i class="fas fa-terminal"></i> Biography.sys</a></li>
-            <li><a href="#gallery" onclick="toggleMenu()"><i class="fas fa-images"></i> Photo Gallery</a></li>
             <li><a href="#projects" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects</a></li>
             <li><a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i> Technical Focus</a></li>
             <li><a href="#participated" onclick="toggleMenu()"><i class="fas fa-users"></i> STEM Experience</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()"><i class="fas fa-images"></i> Photo Gallery</a></li>
             <li><a href="#contact" onclick="toggleMenu()"><i class="fas fa-paper-plane"></i> Contact Me</a></li>
         </ul>
 
@@ -698,27 +710,6 @@
             </div>
         </div>
 
-        <!-- Photo Gallery & Internal Storage Uploader Feature -->
-        <div class="card glass-panel" id="gallery">
-            <h2><i class="fas fa-images"></i> Photo Gallery & Uploader</h2>
-            <p style="color: var(--muted-color); font-size: 0.9rem; margin-bottom: 15px;">
-                Upload your personal photos, friends' pictures, or project images directly from your internal storage into this gallery library.
-            </p>
-            
-            <div class="uploader-box">
-                <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-                <button class="upload-btn" onclick="document.getElementById('imageInput').click()">
-                    <i class="fas fa-cloud-upload-alt"></i> Choose Photo from Storage
-                </button>
-            </div>
-
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Default gallery items -->
-                <div class="gallery-item"><img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal Photo 1"></div>
-                <div class="gallery-item"><img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Photo 2"></div>
-            </div>
-        </div>
-
         <!-- Featured Projects Section -->
         <div class="card glass-panel" id="projects">
             <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
@@ -780,6 +771,34 @@
                 <li><b>MTU STEM Center (Since 2018 E.C.):</b> Built hardware-software integrations in circuit design, microcontrollers, and embedded logic.</li>
                 <li><b>Robotics Projects:</b> Engineered physical <i>Fire-Fighting Robots</i> and <i>Obstacle-Avoiding Autonomous Rovers</i>.</li>
             </ul>
+        </div>
+
+        <!-- Photo Gallery Section (MOVED TO BOTTOM OF PORTFOLIO) -->
+        <div class="card glass-panel" id="gallery">
+            <h2><i class="fas fa-images"></i> Photo Gallery Library</h2>
+            <p style="color: var(--muted-color); font-size: 0.9rem; margin-bottom: 15px;">
+                Official photo collection, academic activities, STEM engineering projects, and personal highlights.
+            </p>
+            
+            <!-- Secret Admin Mode Uploader Box (Only appears when accessed via #admin + password 17870140GMgmGM^?) -->
+            <div class="admin-uploader-box" id="adminUploaderBox">
+                <p style="color: var(--robot-green); font-size: 0.85rem; margin-top: 0;">🔑 Secret Admin Mode Activated!</p>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+                <button class="upload-btn" onclick="document.getElementById('imageInput').click()">
+                    <i class="fas fa-cloud-upload-alt"></i> Choose Photo from Internal Storage
+                </button>
+            </div>
+
+            <!-- Gallery Grid loaded with all your GitHub Uploaded Images -->
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item"><img src="IMG_20260915_114804_267 (1).jpg" alt="Bewuketu Yilikal Photo 1"></div>
+                <div class="gallery-item"><img src="IMG_20260915_114804_064.jpg" alt="Bewuketu Yilikal Photo 2"></div>
+                <div class="gallery-item"><img src="IMG_20261013_132620.jpg" alt="Bewuketu Yilikal Photo 3"></div>
+                <div class="gallery-item"><img src="IMG_20260803_194544_250.jpeg" alt="Bewuketu Yilikal Photo 4"></div>
+                <div class="gallery-item"><img src="IMG_20260803_195432_569.jpeg" alt="Bewuketu Yilikal Photo 5"></div>
+                <div class="gallery-item"><img src="IMG_20260915_114803_854.jpg" alt="Bewuketu Yilikal Photo 6"></div>
+                <div class="gallery-item"><img src="IMG_20260915_114804_348.jpg" alt="Bewuketu Yilikal Photo 7"></div>
+            </div>
         </div>
 
         <!-- Contact Section -->
@@ -889,7 +908,22 @@
             isFirstImage = !isFirstImage;
         }
 
-        // Internal Storage Photo Uploader Handler
+        // Secret Admin Mode Logic (#admin trigger with password 17870140GMgmGM^?)
+        function checkAdminMode() {
+            if (window.location.hash === '#admin') {
+                const password = prompt("🔑 Secret Admin Access: Enter Admin Password:");
+                if (password === "17870140GMgmGM^?") {
+                    document.getElementById('adminUploaderBox').style.display = 'block';
+                    alert("✅ Admin Access Granted! You can now upload photos directly.");
+                } else {
+                    alert("❌ Incorrect Password. Access Denied.");
+                }
+            }
+        }
+        window.addEventListener('hashchange', checkAdminMode);
+        window.addEventListener('load', checkAdminMode);
+
+        // Internal Storage Photo Uploader Handler for Admin
         function handleImageUpload(event) {
             const file = event.target.files[0];
             if (file) {
@@ -899,7 +933,7 @@
                     const newItem = document.createElement('div');
                     newItem.className = 'gallery-item';
                     newItem.innerHTML = `<img src="${e.target.result}" alt="Uploaded Photo">`;
-                    galleryGrid.appendChild(newItem);
+                    galleryGrid.prepend(newItem);
                 }
                 reader.readAsDataURL(file);
             }
